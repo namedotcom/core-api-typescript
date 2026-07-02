@@ -1,0 +1,20 @@
+{
+    "cliVersion": "5.64.0",
+    "generatorName": "fernapi/fern-typescript-sdk",
+    "generatorVersion": "3.75.3",
+    "generatorConfig": {
+        "namespaceExport": "Namecom",
+        "generateWireTests": true,
+        "packageJson": {
+            "description": "Official TypeScript SDK for the name.com Core API",
+            "homepage": "https://github.com/namedotcom/core-api-typescript",
+            "bugs": "https://github.com/namedotcom/core-api-typescript/issues",
+            "keywords": ["namecom", "domains", "api"]
+        }
+    },
+    "originGitCommit": "c3ab257628a7366dab6a8ad857854de9416d2338",
+    "originGitCommitIsDirty": true,
+    "invokedBy": "manual",
+    "requestedVersion": "1.29.0",
+    "sdkVersion": "1.29.0"
+}
