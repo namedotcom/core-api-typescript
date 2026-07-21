@@ -956,7 +956,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "https://destination-site.com", type: "masked" };
+        const rawRequestBody = { forwardsTo: "https://destination-site.com", host: "www", type: "masked" };
         const rawResponseBody = {
             domainName: "example.org",
             forwardsTo: "https://destination-site.com",
@@ -981,6 +981,7 @@ describe("UrlForwardingsClient", () => {
             host: "www.example.org",
             body: {
                 forwardsTo: "https://destination-site.com",
+                host: "www",
                 type: "masked",
             },
         });
@@ -995,7 +996,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", type: "masked" };
+        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1013,6 +1014,7 @@ describe("UrlForwardingsClient", () => {
                 host: "host",
                 body: {
                     forwardsTo: "forwardsTo",
+                    host: "host",
                     type: "masked",
                 },
             });
@@ -1027,7 +1029,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", type: "masked" };
+        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1045,6 +1047,7 @@ describe("UrlForwardingsClient", () => {
                 host: "host",
                 body: {
                     forwardsTo: "forwardsTo",
+                    host: "host",
                     type: "masked",
                 },
             });
@@ -1059,7 +1062,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", type: "masked" };
+        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1077,6 +1080,7 @@ describe("UrlForwardingsClient", () => {
                 host: "host",
                 body: {
                     forwardsTo: "forwardsTo",
+                    host: "host",
                     type: "masked",
                 },
             });
@@ -1091,7 +1095,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", type: "masked" };
+        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
         const rawResponseBody = { message: "message" };
 
         server
@@ -1109,6 +1113,7 @@ describe("UrlForwardingsClient", () => {
                 host: "host",
                 body: {
                     forwardsTo: "forwardsTo",
+                    host: "host",
                     type: "masked",
                 },
             });
@@ -1123,7 +1128,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", type: "masked" };
+        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1141,6 +1146,7 @@ describe("UrlForwardingsClient", () => {
                 host: "host",
                 body: {
                     forwardsTo: "forwardsTo",
+                    host: "host",
                     type: "masked",
                 },
             });
@@ -1155,7 +1161,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", type: "masked" };
+        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
         const rawResponseBody = { message: "message" };
 
         server
@@ -1173,6 +1179,7 @@ describe("UrlForwardingsClient", () => {
                 host: "host",
                 body: {
                     forwardsTo: "forwardsTo",
+                    host: "host",
                     type: "masked",
                 },
             });
@@ -1187,7 +1194,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", type: "masked" };
+        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1205,6 +1212,7 @@ describe("UrlForwardingsClient", () => {
                 host: "host",
                 body: {
                     forwardsTo: "forwardsTo",
+                    host: "host",
                     type: "masked",
                 },
             });
@@ -1219,7 +1227,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", type: "masked" };
+        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1237,6 +1245,7 @@ describe("UrlForwardingsClient", () => {
                 host: "host",
                 body: {
                     forwardsTo: "forwardsTo",
+                    host: "host",
                     type: "masked",
                 },
             });
@@ -1251,7 +1260,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", type: "masked" };
+        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1269,6 +1278,7 @@ describe("UrlForwardingsClient", () => {
                 host: "host",
                 body: {
                     forwardsTo: "forwardsTo",
+                    host: "host",
                     type: "masked",
                 },
             });
@@ -1283,7 +1293,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", type: "masked" };
+        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1301,6 +1311,7 @@ describe("UrlForwardingsClient", () => {
                 host: "host",
                 body: {
                     forwardsTo: "forwardsTo",
+                    host: "host",
                     type: "masked",
                 },
             });
@@ -2340,7 +2351,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "https://destination-site.com", type: "masked" };
+        const rawRequestBody = { forwardsTo: "https://destination-site.com", host: "www", type: "masked" };
         const rawResponseBody = {
             domainName: "example.org",
             forwardsTo: "https://destination-site.com",
@@ -2365,6 +2376,7 @@ describe("UrlForwardingsClient", () => {
             id: 12345,
             body: {
                 forwardsTo: "https://destination-site.com",
+                host: "www",
                 type: "masked",
             },
         });
@@ -2379,7 +2391,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", type: "masked" };
+        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -2397,6 +2409,7 @@ describe("UrlForwardingsClient", () => {
                 id: 1,
                 body: {
                     forwardsTo: "forwardsTo",
+                    host: "host",
                     type: "masked",
                 },
             });
@@ -2411,7 +2424,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", type: "masked" };
+        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -2429,6 +2442,7 @@ describe("UrlForwardingsClient", () => {
                 id: 1,
                 body: {
                     forwardsTo: "forwardsTo",
+                    host: "host",
                     type: "masked",
                 },
             });
@@ -2443,7 +2457,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", type: "masked" };
+        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -2461,6 +2475,7 @@ describe("UrlForwardingsClient", () => {
                 id: 1,
                 body: {
                     forwardsTo: "forwardsTo",
+                    host: "host",
                     type: "masked",
                 },
             });
@@ -2475,7 +2490,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", type: "masked" };
+        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
         const rawResponseBody = { message: "message" };
 
         server
@@ -2493,6 +2508,7 @@ describe("UrlForwardingsClient", () => {
                 id: 1,
                 body: {
                     forwardsTo: "forwardsTo",
+                    host: "host",
                     type: "masked",
                 },
             });
@@ -2507,7 +2523,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", type: "masked" };
+        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -2525,6 +2541,7 @@ describe("UrlForwardingsClient", () => {
                 id: 1,
                 body: {
                     forwardsTo: "forwardsTo",
+                    host: "host",
                     type: "masked",
                 },
             });
@@ -2539,7 +2556,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", type: "masked" };
+        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
         const rawResponseBody = { message: "message" };
 
         server
@@ -2557,6 +2574,7 @@ describe("UrlForwardingsClient", () => {
                 id: 1,
                 body: {
                     forwardsTo: "forwardsTo",
+                    host: "host",
                     type: "masked",
                 },
             });
@@ -2571,7 +2589,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", type: "masked" };
+        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -2589,6 +2607,7 @@ describe("UrlForwardingsClient", () => {
                 id: 1,
                 body: {
                     forwardsTo: "forwardsTo",
+                    host: "host",
                     type: "masked",
                 },
             });
@@ -2603,7 +2622,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", type: "masked" };
+        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -2621,6 +2640,7 @@ describe("UrlForwardingsClient", () => {
                 id: 1,
                 body: {
                     forwardsTo: "forwardsTo",
+                    host: "host",
                     type: "masked",
                 },
             });
@@ -2635,7 +2655,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", type: "masked" };
+        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -2653,6 +2673,7 @@ describe("UrlForwardingsClient", () => {
                 id: 1,
                 body: {
                     forwardsTo: "forwardsTo",
+                    host: "host",
                     type: "masked",
                 },
             });
@@ -2667,7 +2688,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", type: "masked" };
+        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -2685,6 +2706,7 @@ describe("UrlForwardingsClient", () => {
                 id: 1,
                 body: {
                     forwardsTo: "forwardsTo",
+                    host: "host",
                     type: "masked",
                 },
             });

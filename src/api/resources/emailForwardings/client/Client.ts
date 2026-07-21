@@ -73,7 +73,7 @@ export class EmailForwardingsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}/email/forwarding`,
             ),
             method: "GET",
@@ -174,7 +174,7 @@ export class EmailForwardingsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}/email/forwarding`,
             ),
             method: "POST",
@@ -278,7 +278,7 @@ export class EmailForwardingsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}/email/forwarding/${core.url.encodePathParam(emailBox)}`,
             ),
             method: "GET",
@@ -373,7 +373,7 @@ export class EmailForwardingsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}/email/forwarding/${core.url.encodePathParam(emailBox)}`,
             ),
             method: "PUT",
@@ -475,7 +475,7 @@ export class EmailForwardingsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}/email/forwarding/${core.url.encodePathParam(emailBox)}`,
             ),
             method: "DELETE",

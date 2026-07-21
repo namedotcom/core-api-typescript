@@ -76,7 +76,7 @@ export class UrlForwardingsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}/url/forwarding`,
             ),
             method: "GET",
@@ -183,7 +183,7 @@ export class UrlForwardingsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}/url/forwarding`,
             ),
             method: "POST",
@@ -292,7 +292,7 @@ export class UrlForwardingsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}/url/forwarding/${core.url.encodePathParam(host)}`,
             ),
             method: "GET",
@@ -370,6 +370,7 @@ export class UrlForwardingsClient {
      *         host: "www.example.org",
      *         body: {
      *             forwardsTo: "https://destination-site.com",
+     *             host: "www",
      *             type: "masked"
      *         }
      *     })
@@ -396,7 +397,7 @@ export class UrlForwardingsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}/url/forwarding/${core.url.encodePathParam(host)}`,
             ),
             method: "PUT",
@@ -502,7 +503,7 @@ export class UrlForwardingsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}/url/forwarding/${core.url.encodePathParam(host)}`,
             ),
             method: "DELETE",
@@ -602,7 +603,7 @@ export class UrlForwardingsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/urlforwarding/${core.url.encodePathParam(domainName)}`,
             ),
             method: "GET",
@@ -703,7 +704,7 @@ export class UrlForwardingsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/urlforwarding/${core.url.encodePathParam(domainName)}/${core.url.encodePathParam(id)}`,
             ),
             method: "GET",
@@ -799,7 +800,7 @@ export class UrlForwardingsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/urlforwarding/${core.url.encodePathParam(domainName)}/${core.url.encodePathParam(id)}`,
             ),
             method: "DELETE",
@@ -873,6 +874,7 @@ export class UrlForwardingsClient {
      *         id: 12345,
      *         body: {
      *             forwardsTo: "https://destination-site.com",
+     *             host: "www",
      *             type: "masked"
      *         }
      *     })
@@ -899,7 +901,7 @@ export class UrlForwardingsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/urlforwarding/${core.url.encodePathParam(domainName)}/${core.url.encodePathParam(id)}`,
             ),
             method: "PATCH",

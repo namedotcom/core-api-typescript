@@ -462,6 +462,35 @@ describe("VanityNameserversClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = { hostname: "hostname", ips: ["ips", "ips"] };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/domains/domainName/vanity_nameservers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(409)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.vanityNameservers.createVanityNameserver({
+                domainName: "domainName",
+                hostname: "hostname",
+                ips: ["ips", "ips"],
+            });
+        }).rejects.toThrow(Namecom.ConflictError);
+    });
+
+    test("CreateVanityNameserver (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { hostname: "hostname", ips: ["ips", "ips"] };
         const rawResponseBody = { message: "message" };
 
         server
@@ -482,7 +511,7 @@ describe("VanityNameserversClient", () => {
         }).rejects.toThrow(Namecom.UnsupportedMediaTypeError);
     });
 
-    test("CreateVanityNameserver (8)", async () => {
+    test("CreateVanityNameserver (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -511,7 +540,7 @@ describe("VanityNameserversClient", () => {
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
 
-    test("CreateVanityNameserver (9)", async () => {
+    test("CreateVanityNameserver (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -540,7 +569,7 @@ describe("VanityNameserversClient", () => {
         }).rejects.toThrow(Namecom.InternalServerError);
     });
 
-    test("CreateVanityNameserver (10)", async () => {
+    test("CreateVanityNameserver (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -569,7 +598,7 @@ describe("VanityNameserversClient", () => {
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
 
-    test("CreateVanityNameserver (11)", async () => {
+    test("CreateVanityNameserver (12)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,

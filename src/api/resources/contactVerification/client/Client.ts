@@ -72,7 +72,7 @@ export class ContactVerificationClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 "core/v1/contacts/unverified",
             ),
             method: "GET",
@@ -167,7 +167,7 @@ export class ContactVerificationClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/contacts/verify/${core.url.encodePathParam(verificationId)}`,
             ),
             method: "POST",
@@ -280,7 +280,7 @@ export class ContactVerificationClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/contacts/verify/${core.url.encodePathParam(verificationId)}:resend`,
             ),
             method: "POST",

@@ -1608,7 +1608,13 @@ Adds (registers) a new DNSSEC DS record for a domain.
 <dd>
 
 ```typescript
-await client.dnsseCs.createDnssec({});
+await client.dnsseCs.createDnssec({
+    domainName: "domainName",
+    algorithm: 1,
+    digest: "digest",
+    digestType: 1,
+    keyTag: 1
+});
 
 ```
 </dd>
@@ -2679,6 +2685,7 @@ await client.urlForwardings.updateUrlForwarding({
     host: "www.example.org",
     body: {
         forwardsTo: "https://destination-site.com",
+        host: "www",
         type: "masked"
     }
 });
@@ -3014,6 +3021,7 @@ await client.urlForwardings.updateUrlForwardingById({
     id: 12345,
     body: {
         forwardsTo: "https://destination-site.com",
+        host: "www",
         type: "masked"
     }
 });
@@ -3459,9 +3467,11 @@ Supported webhook event names:
 - `domain.lock.status_change` – domain lock added or removed.
 - `domain.transfer.status_change` – domain transfer IN to name.com; status updates while name.com is the gaining registrar.
 - `domain.transfer_out.status_change` – domain transfer OUT from name.com to another registrar; fires when the domain is removed from the account.
-- `domain.transfer.internal_in` - name.com domain transfers in to the subscribing account.
+- `domain.transfer.internal_in` - name.com domain transfers in to the subscribing account via internal transfer.
+- `domain.transfer.internal_out` - name.com domain transfers out of the subscribing account via internal transfer.
 - `contact.verification.status_change` - contact verification status changes (verified or unverified).
 - `domain.registry.rejection` – domain **create** failed after asynchronous registry processing (uncommon; most creates succeed at request time).
+- `domain.expiration` – domain has expired and entered the post-expiry grace period. This is informational only.
 </dd>
 </dl>
 </dd>

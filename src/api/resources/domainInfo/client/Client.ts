@@ -69,7 +69,7 @@ export class DomainInfoClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domaininfo/requirements/${core.url.encodePathParam(tld)}`,
             ),
             method: "GET",
@@ -171,7 +171,7 @@ export class DomainInfoClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domaininfo/claims/${core.url.encodePathParam(domain)}`,
             ),
             method: "POST",
@@ -276,7 +276,7 @@ export class DomainInfoClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domaininfo/requirementsV2/${core.url.encodePathParam(tld)}`,
             ),
             method: "GET",
