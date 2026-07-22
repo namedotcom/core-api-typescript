@@ -8,6 +8,8 @@ export const AvailableWebhooks = {
     DomainTransferOutStatusChange: "domain.transfer_out.status_change",
     ContactVerificationStatusChange: "contact.verification.status_change",
     DomainTransferInternalIn: "domain.transfer.internal_in",
+    DomainTransferInternalOut: "domain.transfer.internal_out",
     DomainRegistryRejection: "domain.registry.rejection",
+    DomainExpiration: "domain.expiration",
 } as const;
 export type AvailableWebhooks = (typeof AvailableWebhooks)[keyof typeof AvailableWebhooks];

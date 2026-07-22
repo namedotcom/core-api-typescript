@@ -16,5 +16,5 @@ import type * as Namecom from "../../../../index.js";
 export interface CreateUrlForwardingRequest {
     /** DomainName is the domain part of the hostname to forward. */
     domainName: string;
-    body: Namecom.CreateUrlForwardingBody;
+    body: Namecom.UrlForwardingInput;
 }

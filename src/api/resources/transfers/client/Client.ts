@@ -69,7 +69,7 @@ export class TransfersClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 "core/v1/transfers",
             ),
             method: "GET",
@@ -166,7 +166,7 @@ export class TransfersClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 "core/v1/transfers",
             ),
             method: "POST",
@@ -272,7 +272,7 @@ export class TransfersClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/transfers/${core.url.encodePathParam(domainName)}`,
             ),
             method: "GET",
@@ -390,7 +390,7 @@ export class TransfersClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/transfers/${core.url.encodePathParam(domainName)}:cancel`,
             ),
             method: "POST",
@@ -496,7 +496,7 @@ export class TransfersClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/transfers/external/out/${core.url.encodePathParam(domainName)}:cancel`,
             ),
             method: "POST",
@@ -614,7 +614,7 @@ export class TransfersClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 "core/v1/transfers/internal/in",
             ),
             method: "POST",
@@ -730,7 +730,7 @@ export class TransfersClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/transfers/eligibility/${core.url.encodePathParam(domainName)}`,
             ),
             method: "GET",

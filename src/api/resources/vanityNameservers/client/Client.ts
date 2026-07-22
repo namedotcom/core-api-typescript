@@ -74,7 +74,7 @@ export class VanityNameserversClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}/vanity_nameservers`,
             ),
             method: "GET",
@@ -145,6 +145,7 @@ export class VanityNameserversClient {
      * @throws {@link Namecom.ForbiddenError}
      * @throws {@link Namecom.NotFoundError}
      * @throws {@link Namecom.MethodNotAllowedError}
+     * @throws {@link Namecom.ConflictError}
      * @throws {@link Namecom.UnsupportedMediaTypeError}
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
@@ -180,7 +181,7 @@ export class VanityNameserversClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}/vanity_nameservers`,
             ),
             method: "POST",
@@ -211,6 +212,8 @@ export class VanityNameserversClient {
                     throw new Namecom.NotFoundError(_response.error.body as Namecom.NotFound404, _response.rawResponse);
                 case 405:
                     throw new Namecom.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 409:
+                    throw new Namecom.ConflictError(_response.error.body as unknown, _response.rawResponse);
                 case 415:
                     throw new Namecom.UnsupportedMediaTypeError(
                         _response.error.body as Namecom.UnsupportedMedia415,
@@ -285,7 +288,7 @@ export class VanityNameserversClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}/vanity_nameservers/${core.url.encodePathParam(hostname)}`,
             ),
             method: "GET",
@@ -383,7 +386,7 @@ export class VanityNameserversClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}/vanity_nameservers/${core.url.encodePathParam(hostname)}`,
             ),
             method: "PUT",
@@ -488,7 +491,7 @@ export class VanityNameserversClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}/vanity_nameservers/${core.url.encodePathParam(hostname)}`,
             ),
             method: "DELETE",

@@ -2,14 +2,20 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         domainName: "domainName",
+ *         algorithm: 1,
+ *         digest: "digest",
+ *         digestType: 1,
+ *         keyTag: 1
+ *     }
  */
 export interface CreateDnssecBody {
-    algorithm?: number;
+    /** DomainName is the domain name to create keys for. */
+    domainName: string;
+    algorithm: number;
     /** Digest is a digest of the DNSKEY RR that is registered with the registry. */
-    digest?: string;
-    /** The name of the domain. */
-    domainName?: string;
-    digestType?: number;
-    keyTag?: number;
+    digest: string;
+    digestType: number;
+    keyTag: number;
 }

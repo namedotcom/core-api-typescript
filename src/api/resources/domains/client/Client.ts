@@ -104,7 +104,7 @@ export class DomainsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 "core/v1/domains",
             ),
             method: "GET",
@@ -353,7 +353,7 @@ export class DomainsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 "core/v1/domains",
             ),
             method: "POST",
@@ -470,7 +470,7 @@ export class DomainsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}`,
             ),
             method: "GET",
@@ -564,7 +564,7 @@ export class DomainsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}`,
             ),
             method: "PATCH",
@@ -673,7 +673,7 @@ export class DomainsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}:disableAutorenew`,
             ),
             method: "POST",
@@ -777,7 +777,7 @@ export class DomainsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}:disableWhoisPrivacy`,
             ),
             method: "POST",
@@ -881,7 +881,7 @@ export class DomainsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}:enableAutorenew`,
             ),
             method: "POST",
@@ -985,7 +985,7 @@ export class DomainsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}:enableWhoisPrivacy`,
             ),
             method: "POST",
@@ -1086,7 +1086,7 @@ export class DomainsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}:getAuthCode`,
             ),
             method: "GET",
@@ -1202,7 +1202,7 @@ export class DomainsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}:getPricing`,
             ),
             method: "GET",
@@ -1310,7 +1310,7 @@ export class DomainsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}:lock`,
             ),
             method: "POST",
@@ -1416,7 +1416,7 @@ export class DomainsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}:purchasePrivacy`,
             ),
             method: "POST",
@@ -1529,7 +1529,7 @@ export class DomainsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}:renew`,
             ),
             method: "POST",
@@ -1641,7 +1641,7 @@ export class DomainsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}:setContacts`,
             ),
             method: "POST",
@@ -1747,7 +1747,7 @@ export class DomainsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}:setNameservers`,
             ),
             method: "POST",
@@ -1854,7 +1854,7 @@ export class DomainsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}:unlock`,
             ),
             method: "POST",
@@ -1964,7 +1964,7 @@ export class DomainsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 "core/v1/domains:checkAvailability",
             ),
             method: "POST",
@@ -2080,7 +2080,7 @@ export class DomainsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 "core/v1/domains:search",
             ),
             method: "POST",
@@ -2183,7 +2183,7 @@ export class DomainsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 "core/v1/zonecheck",
             ),
             method: "POST",

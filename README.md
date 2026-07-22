@@ -1,12 +1,13 @@
-# Namecom TypeScript Library
+# name.com Core API TypeScript Library
 
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=https%3A%2F%2Fgithub.com%2Fnamedotcom%2Fcore-api-typescript)
 [![npm shield](https://img.shields.io/npm/v/@namecom/core-api)](https://www.npmjs.com/package/@namecom/core-api)
 
-The Namecom TypeScript library provides convenient access to the Namecom APIs from TypeScript.
+The name.com Core API TypeScript library provides convenient access to the name.com Core API APIs from TypeScript.
 
 ## Table of Contents
 
+- [Documentation](#documentation)
 - [Installation](#installation)
 - [Reference](#reference)
 - [Usage](#usage)
@@ -26,6 +27,10 @@ The Namecom TypeScript library provides convenient access to the Namecom APIs fr
   - [Runtime Compatibility](#runtime-compatibility)
 - [Contributing](#contributing)
 
+## Documentation
+
+API reference documentation is available [here](https://docs.name.com).
+
 ## Installation
 
 ```sh
@@ -44,27 +49,7 @@ Instantiate and use the client with the following:
 import { NamecomClient } from "@namecom/core-api";
 
 const client = new NamecomClient({ username: "YOUR_USERNAME", password: "YOUR_PASSWORD" });
-await client.accounts.createAccount({
-    account: {
-        accountName: "reseller_subaccount",
-        contacts: {
-            registrant: {
-                firstName: "Jane",
-                lastName: "Doe",
-                address1: "123 Main St.",
-                city: "Denver",
-                state: "CO",
-                zip: "12345",
-                country: "US",
-                email: "admin@example.net",
-                phone: "+13035551212"
-            }
-        },
-        password: "SecureP4ss!"
-    },
-    apiTos: true,
-    tos: true
-});
+await client.hello();
 ```
 
 ## Environments
@@ -75,7 +60,7 @@ This SDK allows you to configure different environments for API requests.
 import { NamecomClient, NamecomEnvironment } from "@namecom/core-api";
 
 const client = new NamecomClient({
-    environment: NamecomEnvironment.Default,
+    environment: NamecomEnvironment.Sandbox,
 });
 ```
 
@@ -101,7 +86,7 @@ will be thrown.
 import { NamecomError } from "@namecom/core-api";
 
 try {
-    await client.accounts.createAccount(...);
+    await client.hello(...);
 } catch (err) {
     if (err instanceof NamecomError) {
         console.log(err.statusCode);
@@ -138,7 +123,7 @@ const client = new NamecomClient({
     }
 });
 
-const response = await client.accounts.createAccount(..., {
+const response = await client.hello(..., {
     headers: {
         'X-Custom-Header': 'custom value'
     }
@@ -150,7 +135,7 @@ const response = await client.accounts.createAccount(..., {
 If you would like to send additional query string parameters as part of the request, use the `queryParams` request option.
 
 ```typescript
-const response = await client.accounts.createAccount(..., {
+const response = await client.hello(..., {
     queryParams: {
         'customQueryParamKey': 'custom query param value'
     }
@@ -180,7 +165,7 @@ Which status codes are retried depends on the `retryStatusCodes` generator confi
 Use the `maxRetries` request option to configure this behavior.
 
 ```typescript
-const response = await client.accounts.createAccount(..., {
+const response = await client.hello(..., {
     maxRetries: 0 // override maxRetries at the request level
 });
 ```
@@ -190,7 +175,7 @@ const response = await client.accounts.createAccount(..., {
 The SDK defaults to a 60 second timeout. Use the `timeoutInSeconds` option to configure this behavior.
 
 ```typescript
-const response = await client.accounts.createAccount(..., {
+const response = await client.hello(..., {
     timeoutInSeconds: 30 // override timeout to 30s
 });
 ```
@@ -201,7 +186,7 @@ The SDK allows users to abort requests at any point by passing in an abort signa
 
 ```typescript
 const controller = new AbortController();
-const response = await client.accounts.createAccount(..., {
+const response = await client.hello(..., {
     abortSignal: controller.signal
 });
 controller.abort(); // aborts the request
@@ -213,7 +198,7 @@ The SDK provides access to raw response data, including headers, through the `.w
 The `.withRawResponse()` method returns a promise that results to an object with a `data` and a `rawResponse` property.
 
 ```typescript
-const { data, rawResponse } = await client.accounts.createAccount(...).withRawResponse();
+const { data, rawResponse } = await client.hello(...).withRawResponse();
 
 console.log(data);
 console.log(rawResponse.headers['X-My-Header']);

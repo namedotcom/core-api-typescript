@@ -67,7 +67,7 @@ export class DnsseCsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}/dnssec`,
             ),
             method: "GET",
@@ -137,7 +137,13 @@ export class DnsseCsClient {
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
-     *     await client.dnsseCs.createDnssec({})
+     *     await client.dnsseCs.createDnssec({
+     *         domainName: "domainName",
+     *         algorithm: 1,
+     *         digest: "digest",
+     *         digestType: 1,
+     *         keyTag: 1
+     *     })
      */
     public createDnssec(
         request: Namecom.CreateDnssecBody,
@@ -150,6 +156,7 @@ export class DnsseCsClient {
         request: Namecom.CreateDnssecBody,
         requestOptions?: DnsseCsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Namecom.Dnssec>> {
+        const { domainName, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -160,15 +167,15 @@ export class DnsseCsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
-                `core/v1/domains/${core.url.encodePathParam(request.domainName)}/dnssec`,
+                    environments.NamecomEnvironment.Sandbox,
+                `core/v1/domains/${core.url.encodePathParam(domainName)}/dnssec`,
             ),
             method: "POST",
             headers: _headers,
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: request,
+            body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -266,7 +273,7 @@ export class DnsseCsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}/dnssec/${core.url.encodePathParam(digest)}`,
             ),
             method: "GET",
@@ -360,7 +367,7 @@ export class DnsseCsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}/dnssec/${core.url.encodePathParam(digest)}`,
             ),
             method: "DELETE",

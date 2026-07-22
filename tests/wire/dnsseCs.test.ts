@@ -248,7 +248,7 @@ describe("DnsseCsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { algorithm: 1, digest: "digest", digestType: 1, keyTag: 1 };
         const rawResponseBody = { algorithm: 1, digest: "digest", digestType: 1, domainName: "domainName", keyTag: 1 };
 
         server
@@ -260,7 +260,13 @@ describe("DnsseCsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.dnsseCs.createDnssec({});
+        const response = await client.dnsseCs.createDnssec({
+            domainName: "domainName",
+            algorithm: 1,
+            digest: "digest",
+            digestType: 1,
+            keyTag: 1,
+        });
         expect(response).toEqual(rawResponseBody);
     });
 
@@ -272,7 +278,7 @@ describe("DnsseCsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { algorithm: 1, digest: "x", digestType: 1, keyTag: 1 };
         const rawResponseBody = { key: "value" };
 
         server
@@ -285,7 +291,13 @@ describe("DnsseCsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.dnsseCs.createDnssec({});
+            return await client.dnsseCs.createDnssec({
+                domainName: "domainName",
+                algorithm: 1,
+                digest: "x",
+                digestType: 1,
+                keyTag: 1,
+            });
         }).rejects.toThrow(Namecom.BadRequestError);
     });
 
@@ -297,7 +309,7 @@ describe("DnsseCsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { algorithm: 1, digest: "x", digestType: 1, keyTag: 1 };
         const rawResponseBody = { key: "value" };
 
         server
@@ -310,7 +322,13 @@ describe("DnsseCsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.dnsseCs.createDnssec({});
+            return await client.dnsseCs.createDnssec({
+                domainName: "domainName",
+                algorithm: 1,
+                digest: "x",
+                digestType: 1,
+                keyTag: 1,
+            });
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
 
@@ -322,7 +340,7 @@ describe("DnsseCsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { algorithm: 1, digest: "x", digestType: 1, keyTag: 1 };
         const rawResponseBody = { key: "value" };
 
         server
@@ -335,7 +353,13 @@ describe("DnsseCsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.dnsseCs.createDnssec({});
+            return await client.dnsseCs.createDnssec({
+                domainName: "domainName",
+                algorithm: 1,
+                digest: "x",
+                digestType: 1,
+                keyTag: 1,
+            });
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
 
@@ -347,7 +371,7 @@ describe("DnsseCsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { algorithm: 1, digest: "x", digestType: 1, keyTag: 1 };
         const rawResponseBody = { message: "message" };
 
         server
@@ -360,7 +384,13 @@ describe("DnsseCsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.dnsseCs.createDnssec({});
+            return await client.dnsseCs.createDnssec({
+                domainName: "domainName",
+                algorithm: 1,
+                digest: "x",
+                digestType: 1,
+                keyTag: 1,
+            });
         }).rejects.toThrow(Namecom.NotFoundError);
     });
 
@@ -372,7 +402,7 @@ describe("DnsseCsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { algorithm: 1, digest: "x", digestType: 1, keyTag: 1 };
         const rawResponseBody = { key: "value" };
 
         server
@@ -385,7 +415,13 @@ describe("DnsseCsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.dnsseCs.createDnssec({});
+            return await client.dnsseCs.createDnssec({
+                domainName: "domainName",
+                algorithm: 1,
+                digest: "x",
+                digestType: 1,
+                keyTag: 1,
+            });
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
 
@@ -397,7 +433,7 @@ describe("DnsseCsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { algorithm: 1, digest: "x", digestType: 1, keyTag: 1 };
         const rawResponseBody = { key: "value" };
 
         server
@@ -410,7 +446,13 @@ describe("DnsseCsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.dnsseCs.createDnssec({});
+            return await client.dnsseCs.createDnssec({
+                domainName: "domainName",
+                algorithm: 1,
+                digest: "x",
+                digestType: 1,
+                keyTag: 1,
+            });
         }).rejects.toThrow(Namecom.ConflictError);
     });
 
@@ -422,7 +464,7 @@ describe("DnsseCsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { algorithm: 1, digest: "x", digestType: 1, keyTag: 1 };
         const rawResponseBody = { message: "message" };
 
         server
@@ -435,7 +477,13 @@ describe("DnsseCsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.dnsseCs.createDnssec({});
+            return await client.dnsseCs.createDnssec({
+                domainName: "domainName",
+                algorithm: 1,
+                digest: "x",
+                digestType: 1,
+                keyTag: 1,
+            });
         }).rejects.toThrow(Namecom.UnsupportedMediaTypeError);
     });
 
@@ -447,7 +495,7 @@ describe("DnsseCsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { algorithm: 1, digest: "x", digestType: 1, keyTag: 1 };
         const rawResponseBody = { key: "value" };
 
         server
@@ -460,7 +508,13 @@ describe("DnsseCsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.dnsseCs.createDnssec({});
+            return await client.dnsseCs.createDnssec({
+                domainName: "domainName",
+                algorithm: 1,
+                digest: "x",
+                digestType: 1,
+                keyTag: 1,
+            });
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
 
@@ -472,7 +526,7 @@ describe("DnsseCsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { algorithm: 1, digest: "x", digestType: 1, keyTag: 1 };
         const rawResponseBody = { key: "value" };
 
         server
@@ -485,7 +539,13 @@ describe("DnsseCsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.dnsseCs.createDnssec({});
+            return await client.dnsseCs.createDnssec({
+                domainName: "domainName",
+                algorithm: 1,
+                digest: "x",
+                digestType: 1,
+                keyTag: 1,
+            });
         }).rejects.toThrow(Namecom.InternalServerError);
     });
 
@@ -497,7 +557,7 @@ describe("DnsseCsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { algorithm: 1, digest: "x", digestType: 1, keyTag: 1 };
         const rawResponseBody = { key: "value" };
 
         server
@@ -510,7 +570,13 @@ describe("DnsseCsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.dnsseCs.createDnssec({});
+            return await client.dnsseCs.createDnssec({
+                domainName: "domainName",
+                algorithm: 1,
+                digest: "x",
+                digestType: 1,
+                keyTag: 1,
+            });
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
 
@@ -522,7 +588,7 @@ describe("DnsseCsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { algorithm: 1, digest: "x", digestType: 1, keyTag: 1 };
         const rawResponseBody = { key: "value" };
 
         server
@@ -535,7 +601,13 @@ describe("DnsseCsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.dnsseCs.createDnssec({});
+            return await client.dnsseCs.createDnssec({
+                domainName: "domainName",
+                algorithm: 1,
+                digest: "x",
+                digestType: 1,
+                keyTag: 1,
+            });
         }).rejects.toThrow(Namecom.GatewayTimeoutError);
     });
 

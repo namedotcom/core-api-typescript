@@ -61,7 +61,7 @@ export class WebhookNotificationsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 "core/v1/notifications",
             ),
             method: "GET",
@@ -115,9 +115,11 @@ export class WebhookNotificationsClient {
      * - `domain.lock.status_change` – domain lock added or removed.
      * - `domain.transfer.status_change` – domain transfer IN to name.com; status updates while name.com is the gaining registrar.
      * - `domain.transfer_out.status_change` – domain transfer OUT from name.com to another registrar; fires when the domain is removed from the account.
-     * - `domain.transfer.internal_in` - name.com domain transfers in to the subscribing account.
+     * - `domain.transfer.internal_in` - name.com domain transfers in to the subscribing account via internal transfer.
+     * - `domain.transfer.internal_out` - name.com domain transfers out of the subscribing account via internal transfer.
      * - `contact.verification.status_change` - contact verification status changes (verified or unverified).
      * - `domain.registry.rejection` – domain **create** failed after asynchronous registry processing (uncommon; most creates succeed at request time).
+     * - `domain.expiration` – domain has expired and entered the post-expiry grace period. This is informational only.
      *
      * @param {Namecom.SubscribeToNotification} request
      * @param {WebhookNotificationsClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -161,7 +163,7 @@ export class WebhookNotificationsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 "core/v1/notifications",
             ),
             method: "POST",
@@ -266,7 +268,7 @@ export class WebhookNotificationsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/notifications/${core.url.encodePathParam(id)}`,
             ),
             method: "PUT",
@@ -362,7 +364,7 @@ export class WebhookNotificationsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/notifications/${core.url.encodePathParam(id)}`,
             ),
             method: "DELETE",

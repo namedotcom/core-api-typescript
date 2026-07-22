@@ -31,6 +31,7 @@ export class DnsClient {
      * @param {Namecom.ListRecordsRequest} request
      * @param {DnsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link Namecom.BadRequestError}
      * @throws {@link Namecom.UnauthorizedError}
      * @throws {@link Namecom.ForbiddenError}
      * @throws {@link Namecom.NotFoundError}
@@ -71,7 +72,7 @@ export class DnsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}/records`,
             ),
             method: "GET",
@@ -93,6 +94,8 @@ export class DnsClient {
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
+                case 400:
+                    throw new Namecom.BadRequestError(_response.error.body as unknown, _response.rawResponse);
                 case 401:
                     throw new Namecom.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                 case 403:
@@ -173,7 +176,7 @@ export class DnsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}/records`,
             ),
             method: "POST",
@@ -277,7 +280,7 @@ export class DnsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}/records/${core.url.encodePathParam(id)}`,
             ),
             method: "GET",
@@ -375,7 +378,7 @@ export class DnsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}/records/${core.url.encodePathParam(id)}`,
             ),
             method: "PUT",
@@ -480,7 +483,7 @@ export class DnsClient {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.NamecomEnvironment.Default,
+                    environments.NamecomEnvironment.Sandbox,
                 `core/v1/domains/${core.url.encodePathParam(domainName)}/records/${core.url.encodePathParam(id)}`,
             ),
             method: "DELETE",

@@ -63,6 +63,32 @@ describe("DnsClient", () => {
             .mockEndpoint()
             .get("/core/v1/domains/domainName/records")
             .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.dns.listRecords({
+                domainName: "domainName",
+            });
+        }).rejects.toThrow(Namecom.BadRequestError);
+    });
+
+    test("ListRecords (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/core/v1/domains/domainName/records")
+            .respondWith()
             .statusCode(401)
             .jsonBody(rawResponseBody)
             .build();
@@ -74,7 +100,7 @@ describe("DnsClient", () => {
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
 
-    test("ListRecords (3)", async () => {
+    test("ListRecords (4)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -100,7 +126,7 @@ describe("DnsClient", () => {
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
 
-    test("ListRecords (4)", async () => {
+    test("ListRecords (5)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -126,7 +152,7 @@ describe("DnsClient", () => {
         }).rejects.toThrow(Namecom.NotFoundError);
     });
 
-    test("ListRecords (5)", async () => {
+    test("ListRecords (6)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -152,7 +178,7 @@ describe("DnsClient", () => {
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
 
-    test("ListRecords (6)", async () => {
+    test("ListRecords (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -178,7 +204,7 @@ describe("DnsClient", () => {
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
 
-    test("ListRecords (7)", async () => {
+    test("ListRecords (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -204,7 +230,7 @@ describe("DnsClient", () => {
         }).rejects.toThrow(Namecom.InternalServerError);
     });
 
-    test("ListRecords (8)", async () => {
+    test("ListRecords (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -230,7 +256,7 @@ describe("DnsClient", () => {
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
 
-    test("ListRecords (9)", async () => {
+    test("ListRecords (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
