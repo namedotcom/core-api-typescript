@@ -88,6 +88,30 @@ describe("PremiumDomainsClient", () => {
             environment: server.baseUrl,
         });
 
+        const rawResponseBody = { message: "message" };
+
+        server
+            .mockEndpoint()
+            .get("/core/v1/premiumdomainslist")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.premiumDomains.premiumDomainLists();
+        }).rejects.toThrow(Namecom.NotFoundError);
+    });
+
+    test("PremiumDomainLists (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
         const rawResponseBody = { key: "value" };
 
         server
@@ -103,7 +127,7 @@ describe("PremiumDomainsClient", () => {
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
 
-    test("PremiumDomainLists (5)", async () => {
+    test("PremiumDomainLists (6)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -127,7 +151,7 @@ describe("PremiumDomainsClient", () => {
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
 
-    test("PremiumDomainLists (6)", async () => {
+    test("PremiumDomainLists (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -151,7 +175,7 @@ describe("PremiumDomainsClient", () => {
         }).rejects.toThrow(Namecom.InternalServerError);
     });
 
-    test("PremiumDomainLists (7)", async () => {
+    test("PremiumDomainLists (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -175,7 +199,7 @@ describe("PremiumDomainsClient", () => {
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
 
-    test("PremiumDomainLists (8)", async () => {
+    test("PremiumDomainLists (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,

@@ -31,6 +31,7 @@ export class TransfersClient {
      * @param {Namecom.ListTransfersRequest} request
      * @param {TransfersClient.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link Namecom.BadRequestError}
      * @throws {@link Namecom.UnauthorizedError}
      * @throws {@link Namecom.PaymentRequiredError}
      * @throws {@link Namecom.ForbiddenError}
@@ -91,6 +92,8 @@ export class TransfersClient {
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
+                case 400:
+                    throw new Namecom.BadRequestError(_response.error.body as unknown, _response.rawResponse);
                 case 401:
                     throw new Namecom.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                 case 402:
@@ -452,6 +455,7 @@ export class TransfersClient {
 
     /**
      * Cancels an outbound transfer for the given domain. Use this when the domain is being transferred out of name.com (losing registrar) to another (gaining) registrar and the registrant or reseller wants to cancel that transfer.
+     * On success, subscribers receive `domain.transfer_out.status_change` with status `canceled`.
      * The endpoint validates that the domain exists and belongs to the authenticated account. Only domains in a pending transfer (out) state can be canceled.
      *
      * @param {Namecom.CancelOutboundTransferRequest} request

@@ -33,6 +33,7 @@ export class PremiumDomainsClient {
      *
      * @throws {@link Namecom.UnauthorizedError}
      * @throws {@link Namecom.ForbiddenError}
+     * @throws {@link Namecom.NotFoundError}
      * @throws {@link Namecom.MethodNotAllowedError}
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
@@ -86,6 +87,8 @@ export class PremiumDomainsClient {
                     throw new Namecom.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                 case 403:
                     throw new Namecom.ForbiddenError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Namecom.NotFoundError(_response.error.body as Namecom.NotFound404, _response.rawResponse);
                 case 405:
                     throw new Namecom.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
                 case 429:

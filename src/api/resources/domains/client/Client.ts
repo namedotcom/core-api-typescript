@@ -321,6 +321,18 @@ export class DomainsClient {
      *     await client.domains.createDomain({
      *         "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
      *         domain: {
+     *             domainName: "example.se"
+     *         },
+     *         tldRequirements: {
+     *             "X-NICSE-IDNUMBER": "5566778899"
+     *         },
+     *         years: 1
+     *     })
+     *
+     * @example
+     *     await client.domains.createDomain({
+     *         "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
+     *         domain: {
      *             domainName: "tiktok.page"
      *         },
      *         claims: {

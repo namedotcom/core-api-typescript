@@ -1,5 +1,6 @@
 export * from "./Account.js";
 export * from "./AccountCreditBalanceChange.js";
+export * from "./AccountDomainRemoval.js";
 export * from "./AccountRequest.js";
 export * from "./AuthCodeResponse.js";
 export * from "./AutorenewEnabled.js";

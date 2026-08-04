@@ -1335,6 +1335,125 @@ describe("DomainsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
+            domain: { domainName: "example.se" },
+            tldRequirements: { "X-NICSE-IDNUMBER": "5566778899" },
+            years: 1,
+        };
+        const rawResponseBody = {
+            domain: {
+                domainName: "example.com",
+                createDate: "2023-01-15T14:30:00Z",
+                expireDate: "2025-01-15T14:30:00Z",
+                autorenewEnabled: true,
+                locked: true,
+                locks: ["clientTransferProhibited", "clientHold"],
+                transferLockExpiresAt: "2023-03-16T14:30:00Z",
+                privacyEnabled: true,
+                contacts: {
+                    admin: {
+                        firstName: "John",
+                        lastName: "Doe",
+                        companyName: "Example Inc.",
+                        address1: "123 Main Street",
+                        address2: "Suite 400",
+                        city: "New York",
+                        state: "NY",
+                        zip: "10001",
+                        country: "US",
+                        email: "john.doe@example.com",
+                        phone: "+15551234567",
+                        fax: "+15557654321",
+                        isVerified: true,
+                        verificationId: 12345,
+                    },
+                    billing: {
+                        firstName: "John",
+                        lastName: "Doe",
+                        companyName: "Example Inc.",
+                        address1: "123 Main Street",
+                        address2: "Suite 400",
+                        city: "New York",
+                        state: "NY",
+                        zip: "10001",
+                        country: "US",
+                        email: "john.doe@example.com",
+                        phone: "+15551234567",
+                        fax: "+15557654321",
+                        isVerified: true,
+                        verificationId: 12345,
+                    },
+                    registrant: {
+                        firstName: "John",
+                        lastName: "Doe",
+                        companyName: "Example Inc.",
+                        address1: "123 Main Street",
+                        address2: "Suite 400",
+                        city: "New York",
+                        state: "NY",
+                        zip: "10001",
+                        country: "US",
+                        email: "john.doe@example.com",
+                        phone: "+15551234567",
+                        fax: "+15557654321",
+                        isVerified: true,
+                        verificationId: 12345,
+                    },
+                    tech: {
+                        firstName: "John",
+                        lastName: "Doe",
+                        companyName: "Example Inc.",
+                        address1: "123 Main Street",
+                        address2: "Suite 400",
+                        city: "New York",
+                        state: "NY",
+                        zip: "10001",
+                        country: "US",
+                        email: "john.doe@example.com",
+                        phone: "+15551234567",
+                        fax: "+15557654321",
+                        isVerified: true,
+                        verificationId: 12345,
+                    },
+                },
+                nameservers: ["ns1.example.com", "ns2.example.com"],
+                renewalPrice: 12.99,
+            },
+            order: 1,
+            totalPaid: 1.1,
+        };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/domains")
+            .header("X-Idempotency-Key", "083910ef-04e4-4bd1-a0bf-3737fe005ca8")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.domains.createDomain({
+            "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
+            domain: {
+                domainName: "example.se",
+            },
+            tldRequirements: {
+                "X-NICSE-IDNUMBER": "5566778899",
+            },
+            years: 1,
+        });
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("CreateDomain (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
             domain: { domainName: "tiktok.page" },
             claims: {
                 claimId: "8c3027d30000000000382500785",
@@ -1449,7 +1568,7 @@ describe("DomainsClient", () => {
         expect(response).toEqual(rawResponseBody);
     });
 
-    test("CreateDomain (11)", async () => {
+    test("CreateDomain (12)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1476,7 +1595,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.BadRequestError);
     });
 
-    test("CreateDomain (12)", async () => {
+    test("CreateDomain (13)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1503,7 +1622,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
 
-    test("CreateDomain (13)", async () => {
+    test("CreateDomain (14)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1530,7 +1649,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.PaymentRequiredError);
     });
 
-    test("CreateDomain (14)", async () => {
+    test("CreateDomain (15)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1557,7 +1676,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
 
-    test("CreateDomain (15)", async () => {
+    test("CreateDomain (16)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1584,7 +1703,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.NotFoundError);
     });
 
-    test("CreateDomain (16)", async () => {
+    test("CreateDomain (17)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1611,7 +1730,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
 
-    test("CreateDomain (17)", async () => {
+    test("CreateDomain (18)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1638,7 +1757,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.ConflictError);
     });
 
-    test("CreateDomain (18)", async () => {
+    test("CreateDomain (19)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1665,7 +1784,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.UnsupportedMediaTypeError);
     });
 
-    test("CreateDomain (19)", async () => {
+    test("CreateDomain (20)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1692,7 +1811,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.UnprocessableEntityError);
     });
 
-    test("CreateDomain (20)", async () => {
+    test("CreateDomain (21)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1719,7 +1838,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
 
-    test("CreateDomain (21)", async () => {
+    test("CreateDomain (22)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1746,7 +1865,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.UnavailableForLegalReasonsError);
     });
 
-    test("CreateDomain (22)", async () => {
+    test("CreateDomain (23)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1773,7 +1892,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.InternalServerError);
     });
 
-    test("CreateDomain (23)", async () => {
+    test("CreateDomain (24)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1800,7 +1919,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.NotImplementedError);
     });
 
-    test("CreateDomain (24)", async () => {
+    test("CreateDomain (25)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1827,7 +1946,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
 
-    test("CreateDomain (25)", async () => {
+    test("CreateDomain (26)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,

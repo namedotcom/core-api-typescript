@@ -31,6 +31,7 @@ export class EmailForwardingsClient {
      * @param {Namecom.ListEmailForwardingsRequest} request
      * @param {EmailForwardingsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link Namecom.BadRequestError}
      * @throws {@link Namecom.UnauthorizedError}
      * @throws {@link Namecom.ForbiddenError}
      * @throws {@link Namecom.NotFoundError}
@@ -95,6 +96,8 @@ export class EmailForwardingsClient {
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
+                case 400:
+                    throw new Namecom.BadRequestError(_response.error.body as unknown, _response.rawResponse);
                 case 401:
                     throw new Namecom.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                 case 403:

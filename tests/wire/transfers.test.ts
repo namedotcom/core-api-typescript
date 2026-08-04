@@ -40,6 +40,24 @@ describe("TransfersClient", () => {
 
         const rawResponseBody = { key: "value" };
 
+        server.mockEndpoint().get("/core/v1/transfers").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.transfers.listTransfers();
+        }).rejects.toThrow(Namecom.BadRequestError);
+    });
+
+    test("ListTransfers (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/core/v1/transfers").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -47,7 +65,7 @@ describe("TransfersClient", () => {
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
 
-    test("ListTransfers (3)", async () => {
+    test("ListTransfers (4)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -65,7 +83,7 @@ describe("TransfersClient", () => {
         }).rejects.toThrow(Namecom.PaymentRequiredError);
     });
 
-    test("ListTransfers (4)", async () => {
+    test("ListTransfers (5)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -83,7 +101,7 @@ describe("TransfersClient", () => {
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
 
-    test("ListTransfers (5)", async () => {
+    test("ListTransfers (6)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -101,7 +119,7 @@ describe("TransfersClient", () => {
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
 
-    test("ListTransfers (6)", async () => {
+    test("ListTransfers (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -119,7 +137,7 @@ describe("TransfersClient", () => {
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
 
-    test("ListTransfers (7)", async () => {
+    test("ListTransfers (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -137,7 +155,7 @@ describe("TransfersClient", () => {
         }).rejects.toThrow(Namecom.InternalServerError);
     });
 
-    test("ListTransfers (8)", async () => {
+    test("ListTransfers (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -155,7 +173,7 @@ describe("TransfersClient", () => {
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
 
-    test("ListTransfers (9)", async () => {
+    test("ListTransfers (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,

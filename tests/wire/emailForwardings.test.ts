@@ -51,6 +51,32 @@ describe("EmailForwardingsClient", () => {
             .mockEndpoint()
             .get("/core/v1/domains/domainName/email/forwarding")
             .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.emailForwardings.listEmailForwardings({
+                domainName: "domainName",
+            });
+        }).rejects.toThrow(Namecom.BadRequestError);
+    });
+
+    test("ListEmailForwardings (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/core/v1/domains/domainName/email/forwarding")
+            .respondWith()
             .statusCode(401)
             .jsonBody(rawResponseBody)
             .build();
@@ -62,7 +88,7 @@ describe("EmailForwardingsClient", () => {
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
 
-    test("ListEmailForwardings (3)", async () => {
+    test("ListEmailForwardings (4)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -88,7 +114,7 @@ describe("EmailForwardingsClient", () => {
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
 
-    test("ListEmailForwardings (4)", async () => {
+    test("ListEmailForwardings (5)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -114,7 +140,7 @@ describe("EmailForwardingsClient", () => {
         }).rejects.toThrow(Namecom.NotFoundError);
     });
 
-    test("ListEmailForwardings (5)", async () => {
+    test("ListEmailForwardings (6)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -140,7 +166,7 @@ describe("EmailForwardingsClient", () => {
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
 
-    test("ListEmailForwardings (6)", async () => {
+    test("ListEmailForwardings (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -166,7 +192,7 @@ describe("EmailForwardingsClient", () => {
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
 
-    test("ListEmailForwardings (7)", async () => {
+    test("ListEmailForwardings (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -192,7 +218,7 @@ describe("EmailForwardingsClient", () => {
         }).rejects.toThrow(Namecom.InternalServerError);
     });
 
-    test("ListEmailForwardings (8)", async () => {
+    test("ListEmailForwardings (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -218,7 +244,7 @@ describe("EmailForwardingsClient", () => {
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
 
-    test("ListEmailForwardings (9)", async () => {
+    test("ListEmailForwardings (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
