@@ -409,6 +409,34 @@ describe("RefundsClient", () => {
             .post("/core/v1/refund")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.refunds.processRefund({
+                orderId: 1,
+                orderItemIds: [1, 1],
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("ProcessRefund (15)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { orderId: 1, orderItemIds: [1, 1] };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/refund")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();

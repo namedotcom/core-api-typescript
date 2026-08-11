@@ -1478,6 +1478,32 @@ describe("DomainInfoClient", () => {
             .mockEndpoint()
             .get("/core/v1/domaininfo/requirements/tld")
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.domainInfo.getRequirement({
+                tld: "tld",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("GetRequirement (14)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/core/v1/domaininfo/requirements/tld")
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -1837,6 +1863,33 @@ describe("DomainInfoClient", () => {
             .post("/core/v1/domaininfo/claims/domain")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.domainInfo.checkDomainClaims({
+                domain: "domain",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("CheckDomainClaims (13)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/domaininfo/claims/domain")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -2178,6 +2231,32 @@ describe("DomainInfoClient", () => {
     });
 
     test("GetTldRequirementsV2 (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/core/v1/domaininfo/requirementsV2/tld")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.domainInfo.getTldRequirementsV2({
+                tld: "tld",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("GetTldRequirementsV2 (12)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,

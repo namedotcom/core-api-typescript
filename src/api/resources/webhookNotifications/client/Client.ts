@@ -37,6 +37,7 @@ export class WebhookNotificationsClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -94,6 +95,8 @@ export class WebhookNotificationsClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -112,9 +115,10 @@ export class WebhookNotificationsClient {
      * Creates a webhook subscription to receive real-time notifications about specific domain or account events (e.g. transfer completions, renewals). Pass the callback URL and event types. This allows external systems to stay in sync with name.com changes.
      * Supported webhook event names:
      * - `account.credit.balance_change` – account credit balance changes (increases or decreases).
+     * - `account.domain.removal` – domain removed from the subscribing account.
      * - `domain.lock.status_change` – domain lock added or removed.
      * - `domain.transfer.status_change` – domain transfer IN to name.com; status updates while name.com is the gaining registrar.
-     * - `domain.transfer_out.status_change` – domain transfer OUT from name.com to another registrar; fires when the domain is removed from the account.
+     * - `domain.transfer_out.status_change` – domain transfer OUT from name.com; `initiated`, `completed` (domain removed), or `canceled` (no longer pending at the registry).
      * - `domain.transfer.internal_in` - name.com domain transfers in to the subscribing account via internal transfer.
      * - `domain.transfer.internal_out` - name.com domain transfers out of the subscribing account via internal transfer.
      * - `contact.verification.status_change` - contact verification status changes (verified or unverified).
@@ -133,6 +137,7 @@ export class WebhookNotificationsClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -208,6 +213,8 @@ export class WebhookNotificationsClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -236,6 +243,7 @@ export class WebhookNotificationsClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -308,6 +316,8 @@ export class WebhookNotificationsClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -335,6 +345,7 @@ export class WebhookNotificationsClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -396,6 +407,8 @@ export class WebhookNotificationsClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:

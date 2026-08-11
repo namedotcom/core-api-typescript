@@ -61,6 +61,30 @@ describe("ContactVerificationClient", () => {
             .mockEndpoint()
             .get("/core/v1/contacts/unverified")
             .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.contactVerification.unverifiedContactsList();
+        }).rejects.toThrow(Namecom.BadRequestError);
+    });
+
+    test("UnverifiedContactsList (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/core/v1/contacts/unverified")
+            .respondWith()
             .statusCode(401)
             .jsonBody(rawResponseBody)
             .build();
@@ -70,7 +94,7 @@ describe("ContactVerificationClient", () => {
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
 
-    test("UnverifiedContactsList (3)", async () => {
+    test("UnverifiedContactsList (4)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -94,7 +118,7 @@ describe("ContactVerificationClient", () => {
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
 
-    test("UnverifiedContactsList (4)", async () => {
+    test("UnverifiedContactsList (5)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -118,7 +142,7 @@ describe("ContactVerificationClient", () => {
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
 
-    test("UnverifiedContactsList (5)", async () => {
+    test("UnverifiedContactsList (6)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -142,7 +166,7 @@ describe("ContactVerificationClient", () => {
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
 
-    test("UnverifiedContactsList (6)", async () => {
+    test("UnverifiedContactsList (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -166,7 +190,7 @@ describe("ContactVerificationClient", () => {
         }).rejects.toThrow(Namecom.InternalServerError);
     });
 
-    test("UnverifiedContactsList (7)", async () => {
+    test("UnverifiedContactsList (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -190,7 +214,31 @@ describe("ContactVerificationClient", () => {
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
 
-    test("UnverifiedContactsList (8)", async () => {
+    test("UnverifiedContactsList (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/core/v1/contacts/unverified")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.contactVerification.unverifiedContactsList();
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("UnverifiedContactsList (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -473,6 +521,32 @@ describe("ContactVerificationClient", () => {
     });
 
     test("VerifyContact (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/contacts/verify/1")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.contactVerification.verifyContact({
+                verificationId: 1,
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("VerifyContact (12)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -787,6 +861,32 @@ describe("ContactVerificationClient", () => {
     });
 
     test("ResendContactVerificationEmail (12)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/contacts/verify/1:resend")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.contactVerification.resendContactVerificationEmail({
+                verificationId: 1,
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("ResendContactVerificationEmail (13)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,

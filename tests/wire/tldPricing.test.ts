@@ -237,6 +237,30 @@ describe("TldPricingClient", () => {
             .mockEndpoint()
             .get("/core/v1/tldpricing")
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.tldPricing.tldPriceList();
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("TldPriceList (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/core/v1/tldpricing")
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();

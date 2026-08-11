@@ -269,6 +269,32 @@ describe("UrlForwardingsClient", () => {
             .mockEndpoint()
             .get("/core/v1/domains/domainName/url/forwarding")
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.urlForwardings.listUrlForwardings({
+                domainName: "domainName",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("ListURLForwardings (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/core/v1/domains/domainName/url/forwarding")
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -655,6 +681,38 @@ describe("UrlForwardingsClient", () => {
             .post("/core/v1/domains/domainName/url/forwarding")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.urlForwardings.createUrlForwarding({
+                domainName: "domainName",
+                body: {
+                    forwardsTo: "forwardsTo",
+                    host: "host",
+                    type: "masked",
+                },
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("CreateURLForwarding (13)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/domains/domainName/url/forwarding")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -922,6 +980,33 @@ describe("UrlForwardingsClient", () => {
     });
 
     test("GetURLForwarding (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/core/v1/domains/domainName/url/forwarding/host")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.urlForwardings.getUrlForwarding({
+                domainName: "domainName",
+                host: "host",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("GetURLForwarding (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1301,6 +1386,39 @@ describe("UrlForwardingsClient", () => {
             .put("/core/v1/domains/domainName/url/forwarding/host")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.urlForwardings.updateUrlForwarding({
+                domainName: "domainName",
+                host: "host",
+                body: {
+                    forwardsTo: "forwardsTo",
+                    host: "host",
+                    type: "masked",
+                },
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("UpdateURLForwarding (12)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .put("/core/v1/domains/domainName/url/forwarding/host")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -1531,6 +1649,33 @@ describe("UrlForwardingsClient", () => {
     });
 
     test("DeleteURLForwarding (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/core/v1/domains/domainName/url/forwarding/host")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.urlForwardings.deleteUrlForwarding({
+                domainName: "domainName",
+                host: "host",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("DeleteURLForwarding (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1821,6 +1966,32 @@ describe("UrlForwardingsClient", () => {
             .mockEndpoint()
             .get("/core/v1/urlforwarding/domainName")
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.urlForwardings.listUrlForwardingsByDomain({
+                domainName: "domainName",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("ListURLForwardingsByDomain (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/core/v1/urlforwarding/domainName")
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -2097,6 +2268,33 @@ describe("UrlForwardingsClient", () => {
             .mockEndpoint()
             .get("/core/v1/urlforwarding/domainName/1")
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.urlForwardings.getUrlForwardingById({
+                domainName: "domainName",
+                id: 1,
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("GetURLForwardingById (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/core/v1/urlforwarding/domainName/1")
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -2317,6 +2515,33 @@ describe("UrlForwardingsClient", () => {
     });
 
     test("DeleteURLForwardingById (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/core/v1/urlforwarding/domainName/1")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.urlForwardings.deleteUrlForwardingById({
+                domainName: "domainName",
+                id: 1,
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("DeleteURLForwardingById (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -2681,6 +2906,39 @@ describe("UrlForwardingsClient", () => {
     });
 
     test("UpdateURLForwardingById (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/core/v1/urlforwarding/domainName/1")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.urlForwardings.updateUrlForwardingById({
+                domainName: "domainName",
+                id: 1,
+                body: {
+                    forwardsTo: "forwardsTo",
+                    host: "host",
+                    type: "masked",
+                },
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("UpdateURLForwardingById (12)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,

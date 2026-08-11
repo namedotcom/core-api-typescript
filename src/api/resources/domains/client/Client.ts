@@ -38,6 +38,7 @@ export class DomainsClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -140,6 +141,8 @@ export class DomainsClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -210,6 +213,7 @@ export class DomainsClient {
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.NotImplementedError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -321,6 +325,18 @@ export class DomainsClient {
      *     await client.domains.createDomain({
      *         "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
      *         domain: {
+     *             domainName: "example.se"
+     *         },
+     *         tldRequirements: {
+     *             "X-NICSE-IDNUMBER": "5566778899"
+     *         },
+     *         years: 1
+     *     })
+     *
+     * @example
+     *     await client.domains.createDomain({
+     *         "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
+     *         domain: {
      *             domainName: "tiktok.page"
      *         },
      *         claims: {
@@ -414,6 +430,8 @@ export class DomainsClient {
                     );
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -441,6 +459,7 @@ export class DomainsClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -502,6 +521,8 @@ export class DomainsClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -532,6 +553,7 @@ export class DomainsClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -608,6 +630,8 @@ export class DomainsClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -644,6 +668,7 @@ export class DomainsClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -712,6 +737,8 @@ export class DomainsClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -748,6 +775,7 @@ export class DomainsClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -816,6 +844,8 @@ export class DomainsClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -852,6 +882,7 @@ export class DomainsClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -920,6 +951,8 @@ export class DomainsClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -956,6 +989,7 @@ export class DomainsClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -1024,6 +1058,8 @@ export class DomainsClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -1057,6 +1093,7 @@ export class DomainsClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -1123,6 +1160,8 @@ export class DomainsClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -1169,6 +1208,7 @@ export class DomainsClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -1245,6 +1285,8 @@ export class DomainsClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -1281,6 +1323,7 @@ export class DomainsClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -1349,6 +1392,8 @@ export class DomainsClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -1385,6 +1430,7 @@ export class DomainsClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -1465,6 +1511,8 @@ export class DomainsClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -1500,6 +1548,7 @@ export class DomainsClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -1576,6 +1625,8 @@ export class DomainsClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -1612,6 +1663,7 @@ export class DomainsClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -1683,6 +1735,8 @@ export class DomainsClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -1717,6 +1771,7 @@ export class DomainsClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -1789,6 +1844,8 @@ export class DomainsClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -1825,6 +1882,7 @@ export class DomainsClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -1893,6 +1951,8 @@ export class DomainsClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -1936,6 +1996,7 @@ export class DomainsClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -2007,6 +2068,8 @@ export class DomainsClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -2052,6 +2115,7 @@ export class DomainsClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -2120,6 +2184,8 @@ export class DomainsClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -2155,6 +2221,7 @@ export class DomainsClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -2228,6 +2295,8 @@ export class DomainsClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:

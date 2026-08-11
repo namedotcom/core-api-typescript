@@ -229,6 +229,32 @@ describe("DnsseCsClient", () => {
             .mockEndpoint()
             .get("/core/v1/domains/domainName/dnssec")
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.dnsseCs.listDnsseCs({
+                domainName: "domainName",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("ListDNSSECs (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/core/v1/domains/domainName/dnssec")
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -596,6 +622,37 @@ describe("DnsseCsClient", () => {
             .post("/core/v1/domains/domainName/dnssec")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.dnsseCs.createDnssec({
+                domainName: "domainName",
+                algorithm: 1,
+                digest: "x",
+                digestType: 1,
+                keyTag: 1,
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("CreateDNSSEC (13)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { algorithm: 1, digest: "x", digestType: 1, keyTag: 1 };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/domains/domainName/dnssec")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -841,6 +898,33 @@ describe("DnsseCsClient", () => {
             .mockEndpoint()
             .get("/core/v1/domains/domainName/dnssec/digest")
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.dnsseCs.getDnssec({
+                domainName: "domainName",
+                digest: "digest",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("GetDNSSEC (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/core/v1/domains/domainName/dnssec/digest")
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -1061,6 +1145,33 @@ describe("DnsseCsClient", () => {
     });
 
     test("DeleteDNSSEC (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/core/v1/domains/domainName/dnssec/digest")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.dnsseCs.deleteDnssec({
+                domainName: "domainName",
+                digest: "digest",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("DeleteDNSSEC (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,

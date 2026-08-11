@@ -271,6 +271,32 @@ describe("DnsClient", () => {
             .mockEndpoint()
             .get("/core/v1/domains/domainName/records")
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.dns.listRecords({
+                domainName: "domainName",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("ListRecords (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/core/v1/domains/domainName/records")
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -606,6 +632,36 @@ describe("DnsClient", () => {
             .post("/core/v1/domains/domainName/records")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.dns.createRecord({
+                domainName: "domainName",
+                answer: "x",
+                host: "host",
+                type: "A",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("CreateRecord (12)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { answer: "x", host: "host", type: "A" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/domains/domainName/records")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -845,6 +901,33 @@ describe("DnsClient", () => {
     });
 
     test("GetRecord (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/core/v1/domains/domainName/records/1")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.dns.getRecord({
+                domainName: "domainName",
+                id: 1,
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("GetRecord (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1195,6 +1278,36 @@ describe("DnsClient", () => {
             .put("/core/v1/domains/domainName/records/1")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.dns.updateRecord({
+                domainName: "domainName",
+                id: 1,
+                answer: "x",
+                type: "A",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("UpdateRecord (12)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { answer: "x", type: "A" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .put("/core/v1/domains/domainName/records/1")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -1444,6 +1557,33 @@ describe("DnsClient", () => {
     });
 
     test("DeleteRecord (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/core/v1/domains/domainName/records/1")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.dns.deleteRecord({
+                domainName: "domainName",
+                id: 1,
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("DeleteRecord (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,

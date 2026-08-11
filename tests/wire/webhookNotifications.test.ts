@@ -198,6 +198,30 @@ describe("WebhookNotificationsClient", () => {
             .mockEndpoint()
             .get("/core/v1/notifications")
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.webhookNotifications.getSubscribedNotifications();
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("GetSubscribedNotifications (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/core/v1/notifications")
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -521,6 +545,35 @@ describe("WebhookNotificationsClient", () => {
             .post("/core/v1/notifications")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.webhookNotifications.subscribeToNotification({
+                eventName: "account.credit.balance_change",
+                url: "url",
+                active: true,
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("SubscribeToNotification (12)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { eventName: "account.credit.balance_change", url: "url", active: true };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/notifications")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -828,6 +881,36 @@ describe("WebhookNotificationsClient", () => {
             .put("/core/v1/notifications/1")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.webhookNotifications.modifySubscription({
+                id: 1,
+                body: {
+                    url: "url",
+                },
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("ModifySubscription (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { url: "url" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .put("/core/v1/notifications/1")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -1042,6 +1125,32 @@ describe("WebhookNotificationsClient", () => {
     });
 
     test("DeleteSubscription (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/core/v1/notifications/1")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.webhookNotifications.deleteSubscription({
+                id: 1,
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("DeleteSubscription (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,

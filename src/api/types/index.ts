@@ -1,5 +1,6 @@
 export * from "./Account.js";
 export * from "./AccountCreditBalanceChange.js";
+export * from "./AccountDomainRemoval.js";
 export * from "./AccountRequest.js";
 export * from "./AuthCodeResponse.js";
 export * from "./AutorenewEnabled.js";
@@ -86,6 +87,7 @@ export * from "./ResellerTldInfo.js";
 export * from "./SearchPurchaseType.js";
 export * from "./SearchResponse.js";
 export * from "./SearchResult.js";
+export * from "./ServiceUnavailableErrorBody.js";
 export * from "./SubscribeToNotificationResponse.js";
 export * from "./SubscriptionRecord.js";
 export * from "./TldInfoJsonSchema.js";

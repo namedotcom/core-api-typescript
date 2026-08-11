@@ -146,6 +146,24 @@ describe("NamecomClient", () => {
 
         const rawResponseBody = { key: "value" };
 
+        server.mockEndpoint().get("/core/v1/hello").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.hello();
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("Hello (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/core/v1/hello").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {

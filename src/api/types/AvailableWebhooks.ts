@@ -3,6 +3,7 @@
 /** The list of configured webhooks you can subscribe to */
 export const AvailableWebhooks = {
     AccountCreditBalanceChange: "account.credit.balance_change",
+    AccountDomainRemoval: "account.domain.removal",
     DomainLockStatusChange: "domain.lock.status_change",
     DomainTransferStatusChange: "domain.transfer.status_change",
     DomainTransferOutStatusChange: "domain.transfer_out.status_change",

@@ -40,6 +40,7 @@ export class DomainInfoClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -108,6 +109,8 @@ export class DomainInfoClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -142,6 +145,7 @@ export class DomainInfoClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -213,6 +217,8 @@ export class DomainInfoClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -247,6 +253,7 @@ export class DomainInfoClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -315,6 +322,8 @@ export class DomainInfoClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:

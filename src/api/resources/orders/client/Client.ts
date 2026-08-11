@@ -31,12 +31,14 @@ export class OrdersClient {
      * @param {Namecom.ListOrdersRequest} request
      * @param {OrdersClient.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link Namecom.BadRequestError}
      * @throws {@link Namecom.UnauthorizedError}
      * @throws {@link Namecom.ForbiddenError}
      * @throws {@link Namecom.MethodNotAllowedError}
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -107,6 +109,8 @@ export class OrdersClient {
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
+                case 400:
+                    throw new Namecom.BadRequestError(_response.error.body as unknown, _response.rawResponse);
                 case 401:
                     throw new Namecom.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                 case 403:
@@ -119,6 +123,8 @@ export class OrdersClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -146,6 +152,7 @@ export class OrdersClient {
      * @throws {@link Namecom.TooManyRequestsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
+     * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
      *
      * @example
@@ -207,6 +214,8 @@ export class OrdersClient {
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
                     throw new Namecom.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Namecom.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
                     throw new Namecom.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:

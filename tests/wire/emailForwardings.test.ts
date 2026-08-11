@@ -51,6 +51,32 @@ describe("EmailForwardingsClient", () => {
             .mockEndpoint()
             .get("/core/v1/domains/domainName/email/forwarding")
             .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.emailForwardings.listEmailForwardings({
+                domainName: "domainName",
+            });
+        }).rejects.toThrow(Namecom.BadRequestError);
+    });
+
+    test("ListEmailForwardings (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/core/v1/domains/domainName/email/forwarding")
+            .respondWith()
             .statusCode(401)
             .jsonBody(rawResponseBody)
             .build();
@@ -62,7 +88,7 @@ describe("EmailForwardingsClient", () => {
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
 
-    test("ListEmailForwardings (3)", async () => {
+    test("ListEmailForwardings (4)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -88,7 +114,7 @@ describe("EmailForwardingsClient", () => {
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
 
-    test("ListEmailForwardings (4)", async () => {
+    test("ListEmailForwardings (5)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -114,7 +140,7 @@ describe("EmailForwardingsClient", () => {
         }).rejects.toThrow(Namecom.NotFoundError);
     });
 
-    test("ListEmailForwardings (5)", async () => {
+    test("ListEmailForwardings (6)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -140,7 +166,7 @@ describe("EmailForwardingsClient", () => {
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
 
-    test("ListEmailForwardings (6)", async () => {
+    test("ListEmailForwardings (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -166,7 +192,7 @@ describe("EmailForwardingsClient", () => {
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
 
-    test("ListEmailForwardings (7)", async () => {
+    test("ListEmailForwardings (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -192,7 +218,7 @@ describe("EmailForwardingsClient", () => {
         }).rejects.toThrow(Namecom.InternalServerError);
     });
 
-    test("ListEmailForwardings (8)", async () => {
+    test("ListEmailForwardings (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -218,7 +244,33 @@ describe("EmailForwardingsClient", () => {
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
 
-    test("ListEmailForwardings (9)", async () => {
+    test("ListEmailForwardings (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/core/v1/domains/domainName/email/forwarding")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.emailForwardings.listEmailForwardings({
+                domainName: "domainName",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("ListEmailForwardings (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -549,6 +601,35 @@ describe("EmailForwardingsClient", () => {
             .post("/core/v1/domains/domainName/email/forwarding")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.emailForwardings.createEmailForwarding({
+                domainName: "domainName",
+                emailBox: "x",
+                emailTo: "x",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("CreateEmailForwarding (12)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { emailBox: "x", emailTo: "x" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/domains/domainName/email/forwarding")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -778,6 +859,33 @@ describe("EmailForwardingsClient", () => {
     });
 
     test("GetEmailForwarding (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/core/v1/domains/domainName/email/forwarding/emailBox")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.emailForwardings.getEmailForwarding({
+                domainName: "domainName",
+                emailBox: "emailBox",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("GetEmailForwarding (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1071,6 +1179,34 @@ describe("EmailForwardingsClient", () => {
             .put("/core/v1/domains/domainName/email/forwarding/emailBox")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.emailForwardings.updateEmailForwarding({
+                domainName: "domainName",
+                emailBox: "emailBox",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("UpdateEmailForwarding (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .put("/core/v1/domains/domainName/email/forwarding/emailBox")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -1296,6 +1432,33 @@ describe("EmailForwardingsClient", () => {
     });
 
     test("DeleteEmailForwarding (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/core/v1/domains/domainName/email/forwarding/emailBox")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.emailForwardings.deleteEmailForwarding({
+                domainName: "domainName",
+                emailBox: "emailBox",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("DeleteEmailForwarding (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,

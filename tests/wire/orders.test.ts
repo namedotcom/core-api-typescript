@@ -68,6 +68,24 @@ describe("OrdersClient", () => {
 
         const rawResponseBody = { key: "value" };
 
+        server.mockEndpoint().get("/core/v1/orders").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.orders.listOrders();
+        }).rejects.toThrow(Namecom.BadRequestError);
+    });
+
+    test("ListOrders (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/core/v1/orders").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -75,7 +93,7 @@ describe("OrdersClient", () => {
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
 
-    test("ListOrders (3)", async () => {
+    test("ListOrders (4)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -93,7 +111,7 @@ describe("OrdersClient", () => {
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
 
-    test("ListOrders (4)", async () => {
+    test("ListOrders (5)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -111,7 +129,7 @@ describe("OrdersClient", () => {
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
 
-    test("ListOrders (5)", async () => {
+    test("ListOrders (6)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -129,7 +147,7 @@ describe("OrdersClient", () => {
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
 
-    test("ListOrders (6)", async () => {
+    test("ListOrders (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -147,7 +165,7 @@ describe("OrdersClient", () => {
         }).rejects.toThrow(Namecom.InternalServerError);
     });
 
-    test("ListOrders (7)", async () => {
+    test("ListOrders (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -165,7 +183,25 @@ describe("OrdersClient", () => {
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
 
-    test("ListOrders (8)", async () => {
+    test("ListOrders (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server.mockEndpoint().get("/core/v1/orders").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.orders.listOrders();
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("ListOrders (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -371,6 +407,26 @@ describe("OrdersClient", () => {
     });
 
     test("GetOrder (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server.mockEndpoint().get("/core/v1/orders/1").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.orders.getOrder({
+                orderId: 1,
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("GetOrder (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,

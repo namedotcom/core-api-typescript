@@ -245,6 +245,24 @@ describe("DomainsClient", () => {
 
         const rawResponseBody = { key: "value" };
 
+        server.mockEndpoint().get("/core/v1/domains").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.domains.listDomains();
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("ListDomains (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/core/v1/domains").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1335,6 +1353,125 @@ describe("DomainsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
+            domain: { domainName: "example.se" },
+            tldRequirements: { "X-NICSE-IDNUMBER": "5566778899" },
+            years: 1,
+        };
+        const rawResponseBody = {
+            domain: {
+                domainName: "example.com",
+                createDate: "2023-01-15T14:30:00Z",
+                expireDate: "2025-01-15T14:30:00Z",
+                autorenewEnabled: true,
+                locked: true,
+                locks: ["clientTransferProhibited", "clientHold"],
+                transferLockExpiresAt: "2023-03-16T14:30:00Z",
+                privacyEnabled: true,
+                contacts: {
+                    admin: {
+                        firstName: "John",
+                        lastName: "Doe",
+                        companyName: "Example Inc.",
+                        address1: "123 Main Street",
+                        address2: "Suite 400",
+                        city: "New York",
+                        state: "NY",
+                        zip: "10001",
+                        country: "US",
+                        email: "john.doe@example.com",
+                        phone: "+15551234567",
+                        fax: "+15557654321",
+                        isVerified: true,
+                        verificationId: 12345,
+                    },
+                    billing: {
+                        firstName: "John",
+                        lastName: "Doe",
+                        companyName: "Example Inc.",
+                        address1: "123 Main Street",
+                        address2: "Suite 400",
+                        city: "New York",
+                        state: "NY",
+                        zip: "10001",
+                        country: "US",
+                        email: "john.doe@example.com",
+                        phone: "+15551234567",
+                        fax: "+15557654321",
+                        isVerified: true,
+                        verificationId: 12345,
+                    },
+                    registrant: {
+                        firstName: "John",
+                        lastName: "Doe",
+                        companyName: "Example Inc.",
+                        address1: "123 Main Street",
+                        address2: "Suite 400",
+                        city: "New York",
+                        state: "NY",
+                        zip: "10001",
+                        country: "US",
+                        email: "john.doe@example.com",
+                        phone: "+15551234567",
+                        fax: "+15557654321",
+                        isVerified: true,
+                        verificationId: 12345,
+                    },
+                    tech: {
+                        firstName: "John",
+                        lastName: "Doe",
+                        companyName: "Example Inc.",
+                        address1: "123 Main Street",
+                        address2: "Suite 400",
+                        city: "New York",
+                        state: "NY",
+                        zip: "10001",
+                        country: "US",
+                        email: "john.doe@example.com",
+                        phone: "+15551234567",
+                        fax: "+15557654321",
+                        isVerified: true,
+                        verificationId: 12345,
+                    },
+                },
+                nameservers: ["ns1.example.com", "ns2.example.com"],
+                renewalPrice: 12.99,
+            },
+            order: 1,
+            totalPaid: 1.1,
+        };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/domains")
+            .header("X-Idempotency-Key", "083910ef-04e4-4bd1-a0bf-3737fe005ca8")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.domains.createDomain({
+            "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
+            domain: {
+                domainName: "example.se",
+            },
+            tldRequirements: {
+                "X-NICSE-IDNUMBER": "5566778899",
+            },
+            years: 1,
+        });
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("CreateDomain (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
             domain: { domainName: "tiktok.page" },
             claims: {
                 claimId: "8c3027d30000000000382500785",
@@ -1449,7 +1586,7 @@ describe("DomainsClient", () => {
         expect(response).toEqual(rawResponseBody);
     });
 
-    test("CreateDomain (11)", async () => {
+    test("CreateDomain (12)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1476,7 +1613,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.BadRequestError);
     });
 
-    test("CreateDomain (12)", async () => {
+    test("CreateDomain (13)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1503,7 +1640,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
 
-    test("CreateDomain (13)", async () => {
+    test("CreateDomain (14)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1530,7 +1667,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.PaymentRequiredError);
     });
 
-    test("CreateDomain (14)", async () => {
+    test("CreateDomain (15)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1557,7 +1694,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
 
-    test("CreateDomain (15)", async () => {
+    test("CreateDomain (16)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1584,7 +1721,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.NotFoundError);
     });
 
-    test("CreateDomain (16)", async () => {
+    test("CreateDomain (17)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1611,7 +1748,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
 
-    test("CreateDomain (17)", async () => {
+    test("CreateDomain (18)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1638,7 +1775,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.ConflictError);
     });
 
-    test("CreateDomain (18)", async () => {
+    test("CreateDomain (19)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1665,7 +1802,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.UnsupportedMediaTypeError);
     });
 
-    test("CreateDomain (19)", async () => {
+    test("CreateDomain (20)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1692,7 +1829,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.UnprocessableEntityError);
     });
 
-    test("CreateDomain (20)", async () => {
+    test("CreateDomain (21)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1719,7 +1856,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
 
-    test("CreateDomain (21)", async () => {
+    test("CreateDomain (22)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1746,7 +1883,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.UnavailableForLegalReasonsError);
     });
 
-    test("CreateDomain (22)", async () => {
+    test("CreateDomain (23)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1773,7 +1910,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.InternalServerError);
     });
 
-    test("CreateDomain (23)", async () => {
+    test("CreateDomain (24)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1800,7 +1937,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.NotImplementedError);
     });
 
-    test("CreateDomain (24)", async () => {
+    test("CreateDomain (25)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -1827,7 +1964,34 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
 
-    test("CreateDomain (25)", async () => {
+    test("CreateDomain (26)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { domain: {} };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/domains")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.domains.createDomain({
+                domain: {},
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("CreateDomain (27)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -2139,6 +2303,32 @@ describe("DomainsClient", () => {
     });
 
     test("GetDomain (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/core/v1/domains/domainName")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.domains.getDomain({
+                domainName: "domainName",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("GetDomain (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -2586,6 +2776,36 @@ describe("DomainsClient", () => {
             .patch("/core/v1/domains/domainName")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.domains.updateDomain({
+                domainName: "domainName",
+                body: {
+                    autorenewEnabled: true,
+                },
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("UpdateDomain (13)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { autorenewEnabled: true };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/core/v1/domains/domainName")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -2937,6 +3157,32 @@ describe("DomainsClient", () => {
     });
 
     test("DisableAutorenew (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/domains/domainName:disableAutorenew")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.domains.disableAutorenew({
+                domainName: "domainName",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("DisableAutorenew (12)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -3313,6 +3559,32 @@ describe("DomainsClient", () => {
             .mockEndpoint()
             .post("/core/v1/domains/domainName:disableWhoisPrivacy")
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.domains.disableWhoisPrivacy({
+                domainName: "domainName",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("DisableWhoisPrivacy (12)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/domains/domainName:disableWhoisPrivacy")
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -3661,6 +3933,32 @@ describe("DomainsClient", () => {
     });
 
     test("EnableAutorenew (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/domains/domainName:enableAutorenew")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.domains.enableAutorenew({
+                domainName: "domainName",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("EnableAutorenew (12)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -4037,6 +4335,32 @@ describe("DomainsClient", () => {
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableWhoisPrivacy")
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.domains.enableWhoisPrivacy({
+                domainName: "domainName",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("EnableWhoisPrivacy (12)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/domains/domainName:enableWhoisPrivacy")
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -4282,6 +4606,32 @@ describe("DomainsClient", () => {
     });
 
     test("GetAuthCodeForDomain (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/core/v1/domains/domainName:getAuthCode")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.domains.getAuthCodeForDomain({
+                domainName: "domainName",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("GetAuthCodeForDomain (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -4568,6 +4918,32 @@ describe("DomainsClient", () => {
     });
 
     test("GetPricingForDomain (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/core/v1/domains/domainName:getPricing")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.domains.getPricingForDomain({
+                domainName: "domainName",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("GetPricingForDomain (12)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -4930,6 +5306,32 @@ describe("DomainsClient", () => {
     });
 
     test("LockDomain (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/domains/domainName:lock")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.domains.lockDomain({
+                domainName: "domainName",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("LockDomain (12)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -5377,6 +5779,33 @@ describe("DomainsClient", () => {
             .post("/core/v1/domains/domainName:purchasePrivacy")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.domains.purchasePrivacy({
+                domainName: "domainName",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("PurchasePrivacy (14)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/domains/domainName:purchasePrivacy")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -5781,6 +6210,33 @@ describe("DomainsClient", () => {
             .post("/core/v1/domains/domainName:renew")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.domains.renewDomain({
+                domainName: "domainName",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("RenewDomain (13)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/domains/domainName:renew")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -6139,6 +6595,33 @@ describe("DomainsClient", () => {
     });
 
     test("SetContacts (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/domains/domainName:setContacts")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.domains.setContacts({
+                domainName: "domainName",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("SetContacts (12)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -6537,6 +7020,34 @@ describe("DomainsClient", () => {
             .post("/core/v1/domains/domainName:setNameservers")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.domains.setNameservers({
+                domainName: "domainName",
+                nameservers: ["nameservers", "nameservers"],
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("SetNameservers (12)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { nameservers: ["nameservers", "nameservers"] };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/domains/domainName:setNameservers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -6900,6 +7411,32 @@ describe("DomainsClient", () => {
             .mockEndpoint()
             .post("/core/v1/domains/domainName:unlock")
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.domains.unlockDomain({
+                domainName: "domainName",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("UnlockDomain (12)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/domains/domainName:unlock")
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -7168,6 +7705,33 @@ describe("DomainsClient", () => {
     });
 
     test("CheckAvailability (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { domainNames: ["domainNames", "domainNames"] };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/domains:checkAvailability")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.domains.checkAvailability({
+                domainNames: ["domainNames", "domainNames"],
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("CheckAvailability (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -7466,6 +8030,33 @@ describe("DomainsClient", () => {
             .post("/core/v1/domains:search")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.domains.search({
+                keyword: "keyword",
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("Search (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { keyword: "keyword" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/domains:search")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
@@ -7747,6 +8338,33 @@ describe("DomainsClient", () => {
     });
 
     test("ZoneCheck (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { domainNames: ["domainNames", "domainNames"] };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/zonecheck")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.domains.zoneCheck({
+                domainNames: ["domainNames", "domainNames"],
+            });
+        }).rejects.toThrow(Namecom.ServiceUnavailableError);
+    });
+
+    test("ZoneCheck (12)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
