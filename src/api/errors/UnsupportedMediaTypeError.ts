@@ -5,6 +5,8 @@ import * as errors from "../../errors/index.js";
 import type * as Namecom from "../index.js";
 
 export class UnsupportedMediaTypeError extends errors.NamecomError {
+    public declare readonly body: Namecom.UnsupportedMedia415;
+
     constructor(body: Namecom.UnsupportedMedia415, rawResponse?: core.RawResponse) {
         super({
             message: "UnsupportedMediaTypeError",

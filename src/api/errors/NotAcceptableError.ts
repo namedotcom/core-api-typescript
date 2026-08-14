@@ -5,6 +5,8 @@ import * as errors from "../../errors/index.js";
 import type * as Namecom from "../index.js";
 
 export class NotAcceptableError extends errors.NamecomError {
+    public declare readonly body: Namecom.GenericError500;
+
     constructor(body: Namecom.GenericError500, rawResponse?: core.RawResponse) {
         super({
             message: "NotAcceptableError",

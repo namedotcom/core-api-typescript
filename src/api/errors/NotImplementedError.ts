@@ -5,6 +5,8 @@ import * as errors from "../../errors/index.js";
 import type * as Namecom from "../index.js";
 
 export class NotImplementedError extends errors.NamecomError {
+    public declare readonly body: Namecom.GenericError501;
+
     constructor(body: Namecom.GenericError501, rawResponse?: core.RawResponse) {
         super({
             message: "NotImplementedError",

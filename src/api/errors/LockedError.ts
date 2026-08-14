@@ -5,6 +5,8 @@ import * as errors from "../../errors/index.js";
 import type * as Namecom from "../index.js";
 
 export class LockedError extends errors.NamecomError {
+    public declare readonly body: Namecom.Locked423;
+
     constructor(body: Namecom.Locked423, rawResponse?: core.RawResponse) {
         super({
             message: "LockedError",

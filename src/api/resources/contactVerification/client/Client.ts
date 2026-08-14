@@ -4,6 +4,7 @@ import type { BaseClientOptions, BaseRequestOptions } from "../../../../BaseClie
 import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "../../../../BaseClient.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import * as core from "../../../../core/index.js";
+import { mergeAdditionalBodyParameters } from "../../../../core/requestBody.js";
 import * as environments from "../../../../environments.js";
 import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCodeError.js";
 import * as errors from "../../../../errors/index.js";
@@ -41,6 +42,8 @@ export class ContactVerificationClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.contactVerification.unverifiedContactsList({
@@ -144,11 +147,14 @@ export class ContactVerificationClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.contactVerification.verifyContact({
      *         "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
-     *         verificationId: 1
+     *         verificationId: 1,
+     *         body: {}
      *     })
      */
     public verifyContact(
@@ -162,7 +168,7 @@ export class ContactVerificationClient {
         request: Namecom.VerifyContactRequest,
         requestOptions?: ContactVerificationClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
-        const { verificationId, "X-Idempotency-Key": idempotencyKey } = request;
+        const { verificationId, "X-Idempotency-Key": idempotencyKey, body: _body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -179,7 +185,10 @@ export class ContactVerificationClient {
             ),
             method: "POST",
             headers: _headers,
+            contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            requestType: "json",
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -260,11 +269,14 @@ export class ContactVerificationClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.contactVerification.resendContactVerificationEmail({
      *         "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
-     *         verificationId: 1
+     *         verificationId: 1,
+     *         body: {}
      *     })
      */
     public resendContactVerificationEmail(
@@ -278,7 +290,7 @@ export class ContactVerificationClient {
         request: Namecom.ResendContactVerificationEmailRequest,
         requestOptions?: ContactVerificationClient.RequestOptions,
     ): Promise<core.WithRawResponse<Namecom.ContactVerificationResendResponse>> {
-        const { verificationId, "X-Idempotency-Key": idempotencyKey } = request;
+        const { verificationId, "X-Idempotency-Key": idempotencyKey, body: _body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -295,7 +307,10 @@ export class ContactVerificationClient {
             ),
             method: "POST",
             headers: _headers,
+            contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            requestType: "json",
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

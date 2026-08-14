@@ -902,12 +902,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { domainName: "example.com", email: "admin@example.com", status: "canceled" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
@@ -915,6 +916,7 @@ describe("TransfersClient", () => {
 
         const response = await client.transfers.cancelTransfer({
             domainName: "domainName",
+            body: {},
         });
         expect(response).toEqual(rawResponseBody);
     });
@@ -927,12 +929,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(400)
             .jsonBody(rawResponseBody)
@@ -941,6 +944,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.BadRequestError);
     });
@@ -953,12 +957,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(401)
             .jsonBody(rawResponseBody)
@@ -967,6 +972,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
@@ -979,12 +985,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(403)
             .jsonBody(rawResponseBody)
@@ -993,6 +1000,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
@@ -1005,12 +1013,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(404)
             .jsonBody(rawResponseBody)
@@ -1019,6 +1028,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.NotFoundError);
     });
@@ -1031,12 +1041,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(405)
             .jsonBody(rawResponseBody)
@@ -1045,6 +1056,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
@@ -1057,12 +1069,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(409)
             .jsonBody(rawResponseBody)
@@ -1071,6 +1084,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.ConflictError);
     });
@@ -1083,12 +1097,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(415)
             .jsonBody(rawResponseBody)
@@ -1097,6 +1112,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnsupportedMediaTypeError);
     });
@@ -1109,12 +1125,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
@@ -1123,6 +1140,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
@@ -1135,12 +1153,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(500)
             .jsonBody(rawResponseBody)
@@ -1149,6 +1168,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.InternalServerError);
     });
@@ -1161,12 +1181,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(502)
             .jsonBody(rawResponseBody)
@@ -1175,6 +1196,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
@@ -1187,12 +1209,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(503)
             .jsonBody(rawResponseBody)
@@ -1201,6 +1224,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.ServiceUnavailableError);
     });
@@ -1213,12 +1237,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
@@ -1227,6 +1252,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.GatewayTimeoutError);
     });
@@ -1239,12 +1265,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { domainName: "example.com", status: "canceled" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/external/out/example.com:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
@@ -1252,6 +1279,7 @@ describe("TransfersClient", () => {
 
         const response = await client.transfers.cancelOutboundTransfer({
             domainName: "example.com",
+            body: {},
         });
         expect(response).toEqual(rawResponseBody);
     });
@@ -1264,12 +1292,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/external/out/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(401)
             .jsonBody(rawResponseBody)
@@ -1278,6 +1307,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelOutboundTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
@@ -1290,12 +1320,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/external/out/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(403)
             .jsonBody(rawResponseBody)
@@ -1304,6 +1335,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelOutboundTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
@@ -1316,12 +1348,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/external/out/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(404)
             .jsonBody(rawResponseBody)
@@ -1330,6 +1363,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelOutboundTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.NotFoundError);
     });
@@ -1342,12 +1376,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/external/out/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(405)
             .jsonBody(rawResponseBody)
@@ -1356,6 +1391,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelOutboundTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
@@ -1368,12 +1404,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/external/out/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(409)
             .jsonBody(rawResponseBody)
@@ -1382,6 +1419,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelOutboundTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.ConflictError);
     });
@@ -1394,12 +1432,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/external/out/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(415)
             .jsonBody(rawResponseBody)
@@ -1408,6 +1447,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelOutboundTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnsupportedMediaTypeError);
     });
@@ -1420,12 +1460,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/external/out/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(422)
             .jsonBody(rawResponseBody)
@@ -1434,6 +1475,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelOutboundTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnprocessableEntityError);
     });
@@ -1446,12 +1488,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/external/out/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
@@ -1460,6 +1503,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelOutboundTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
@@ -1472,12 +1516,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/external/out/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(500)
             .jsonBody(rawResponseBody)
@@ -1486,6 +1531,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelOutboundTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.InternalServerError);
     });
@@ -1498,12 +1544,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/external/out/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(502)
             .jsonBody(rawResponseBody)
@@ -1512,6 +1559,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelOutboundTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
@@ -1524,12 +1572,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/external/out/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(503)
             .jsonBody(rawResponseBody)
@@ -1538,6 +1587,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelOutboundTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.ServiceUnavailableError);
     });
@@ -1550,12 +1600,13 @@ describe("TransfersClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/transfers/external/out/domainName:cancel")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
@@ -1564,6 +1615,7 @@ describe("TransfersClient", () => {
         await expect(async () => {
             return await client.transfers.cancelOutboundTransfer({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.GatewayTimeoutError);
     });

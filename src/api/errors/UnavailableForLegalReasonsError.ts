@@ -5,6 +5,8 @@ import * as errors from "../../errors/index.js";
 import type * as Namecom from "../index.js";
 
 export class UnavailableForLegalReasonsError extends errors.NamecomError {
+    public declare readonly body: Namecom.UnavailableForLegal451;
+
     constructor(body: Namecom.UnavailableForLegal451, rawResponse?: core.RawResponse) {
         super({
             message: "UnavailableForLegalReasonsError",

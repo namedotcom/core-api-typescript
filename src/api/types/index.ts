@@ -38,6 +38,7 @@ export * from "./DomainTransferInternalOutStatusChange.js";
 export * from "./DomainTransferOutStatusChange.js";
 export * from "./DomainTransferStatusChange.js";
 export * from "./EmailForwarding.js";
+export * from "./EmptyObject.js";
 export * from "./ExpireDate.js";
 export * from "./ForbiddenErrorBody.js";
 export * from "./GatewayTimeout504.js";

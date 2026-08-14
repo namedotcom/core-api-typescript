@@ -270,11 +270,13 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
+        const rawRequestBody = {};
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1")
             .header("X-Idempotency-Key", "083910ef-04e4-4bd1-a0bf-3737fe005ca8")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
             .build();
@@ -282,6 +284,7 @@ describe("ContactVerificationClient", () => {
         const response = await client.contactVerification.verifyContact({
             "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
             verificationId: 1,
+            body: {},
         });
         expect(response).toEqual(undefined);
     });
@@ -294,12 +297,13 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(401)
             .jsonBody(rawResponseBody)
@@ -308,6 +312,7 @@ describe("ContactVerificationClient", () => {
         await expect(async () => {
             return await client.contactVerification.verifyContact({
                 verificationId: 1,
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
@@ -320,12 +325,13 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(403)
             .jsonBody(rawResponseBody)
@@ -334,6 +340,7 @@ describe("ContactVerificationClient", () => {
         await expect(async () => {
             return await client.contactVerification.verifyContact({
                 verificationId: 1,
+                body: {},
             });
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
@@ -346,12 +353,13 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(404)
             .jsonBody(rawResponseBody)
@@ -360,6 +368,7 @@ describe("ContactVerificationClient", () => {
         await expect(async () => {
             return await client.contactVerification.verifyContact({
                 verificationId: 1,
+                body: {},
             });
         }).rejects.toThrow(Namecom.NotFoundError);
     });
@@ -372,12 +381,13 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(405)
             .jsonBody(rawResponseBody)
@@ -386,6 +396,7 @@ describe("ContactVerificationClient", () => {
         await expect(async () => {
             return await client.contactVerification.verifyContact({
                 verificationId: 1,
+                body: {},
             });
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
@@ -398,12 +409,13 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(409)
             .jsonBody(rawResponseBody)
@@ -412,6 +424,7 @@ describe("ContactVerificationClient", () => {
         await expect(async () => {
             return await client.contactVerification.verifyContact({
                 verificationId: 1,
+                body: {},
             });
         }).rejects.toThrow(Namecom.ConflictError);
     });
@@ -424,12 +437,13 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(415)
             .jsonBody(rawResponseBody)
@@ -438,6 +452,7 @@ describe("ContactVerificationClient", () => {
         await expect(async () => {
             return await client.contactVerification.verifyContact({
                 verificationId: 1,
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnsupportedMediaTypeError);
     });
@@ -450,12 +465,13 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
@@ -464,6 +480,7 @@ describe("ContactVerificationClient", () => {
         await expect(async () => {
             return await client.contactVerification.verifyContact({
                 verificationId: 1,
+                body: {},
             });
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
@@ -476,12 +493,13 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(500)
             .jsonBody(rawResponseBody)
@@ -490,6 +508,7 @@ describe("ContactVerificationClient", () => {
         await expect(async () => {
             return await client.contactVerification.verifyContact({
                 verificationId: 1,
+                body: {},
             });
         }).rejects.toThrow(Namecom.InternalServerError);
     });
@@ -502,12 +521,13 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(502)
             .jsonBody(rawResponseBody)
@@ -516,6 +536,7 @@ describe("ContactVerificationClient", () => {
         await expect(async () => {
             return await client.contactVerification.verifyContact({
                 verificationId: 1,
+                body: {},
             });
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
@@ -528,12 +549,13 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(503)
             .jsonBody(rawResponseBody)
@@ -542,6 +564,7 @@ describe("ContactVerificationClient", () => {
         await expect(async () => {
             return await client.contactVerification.verifyContact({
                 verificationId: 1,
+                body: {},
             });
         }).rejects.toThrow(Namecom.ServiceUnavailableError);
     });
@@ -554,12 +577,13 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
@@ -568,6 +592,7 @@ describe("ContactVerificationClient", () => {
         await expect(async () => {
             return await client.contactVerification.verifyContact({
                 verificationId: 1,
+                body: {},
             });
         }).rejects.toThrow(Namecom.GatewayTimeoutError);
     });
@@ -580,13 +605,14 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { sent: true, verificationId: 98752463, nextEligibleAt: "2026-01-14T12:15:00Z" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1:resend")
             .header("X-Idempotency-Key", "083910ef-04e4-4bd1-a0bf-3737fe005ca8")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
@@ -595,6 +621,7 @@ describe("ContactVerificationClient", () => {
         const response = await client.contactVerification.resendContactVerificationEmail({
             "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
             verificationId: 1,
+            body: {},
         });
         expect(response).toEqual(rawResponseBody);
     });
@@ -607,13 +634,14 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { sent: false, verificationId: 98752463, nextEligibleAt: "2026-01-14T12:00:00Z" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1:resend")
             .header("X-Idempotency-Key", "083910ef-04e4-4bd1-a0bf-3737fe005ca8")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
@@ -622,6 +650,7 @@ describe("ContactVerificationClient", () => {
         const response = await client.contactVerification.resendContactVerificationEmail({
             "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
             verificationId: 1,
+            body: {},
         });
         expect(response).toEqual(rawResponseBody);
     });
@@ -634,12 +663,13 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1:resend")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(401)
             .jsonBody(rawResponseBody)
@@ -648,6 +678,7 @@ describe("ContactVerificationClient", () => {
         await expect(async () => {
             return await client.contactVerification.resendContactVerificationEmail({
                 verificationId: 1,
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
@@ -660,12 +691,13 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1:resend")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(403)
             .jsonBody(rawResponseBody)
@@ -674,6 +706,7 @@ describe("ContactVerificationClient", () => {
         await expect(async () => {
             return await client.contactVerification.resendContactVerificationEmail({
                 verificationId: 1,
+                body: {},
             });
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
@@ -686,12 +719,13 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1:resend")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(404)
             .jsonBody(rawResponseBody)
@@ -700,6 +734,7 @@ describe("ContactVerificationClient", () => {
         await expect(async () => {
             return await client.contactVerification.resendContactVerificationEmail({
                 verificationId: 1,
+                body: {},
             });
         }).rejects.toThrow(Namecom.NotFoundError);
     });
@@ -712,12 +747,13 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1:resend")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(405)
             .jsonBody(rawResponseBody)
@@ -726,6 +762,7 @@ describe("ContactVerificationClient", () => {
         await expect(async () => {
             return await client.contactVerification.resendContactVerificationEmail({
                 verificationId: 1,
+                body: {},
             });
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
@@ -738,12 +775,13 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1:resend")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(409)
             .jsonBody(rawResponseBody)
@@ -752,6 +790,7 @@ describe("ContactVerificationClient", () => {
         await expect(async () => {
             return await client.contactVerification.resendContactVerificationEmail({
                 verificationId: 1,
+                body: {},
             });
         }).rejects.toThrow(Namecom.ConflictError);
     });
@@ -764,12 +803,13 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1:resend")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(415)
             .jsonBody(rawResponseBody)
@@ -778,6 +818,7 @@ describe("ContactVerificationClient", () => {
         await expect(async () => {
             return await client.contactVerification.resendContactVerificationEmail({
                 verificationId: 1,
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnsupportedMediaTypeError);
     });
@@ -790,12 +831,13 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1:resend")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
@@ -804,6 +846,7 @@ describe("ContactVerificationClient", () => {
         await expect(async () => {
             return await client.contactVerification.resendContactVerificationEmail({
                 verificationId: 1,
+                body: {},
             });
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
@@ -816,12 +859,13 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1:resend")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(500)
             .jsonBody(rawResponseBody)
@@ -830,6 +874,7 @@ describe("ContactVerificationClient", () => {
         await expect(async () => {
             return await client.contactVerification.resendContactVerificationEmail({
                 verificationId: 1,
+                body: {},
             });
         }).rejects.toThrow(Namecom.InternalServerError);
     });
@@ -842,12 +887,13 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1:resend")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(502)
             .jsonBody(rawResponseBody)
@@ -856,6 +902,7 @@ describe("ContactVerificationClient", () => {
         await expect(async () => {
             return await client.contactVerification.resendContactVerificationEmail({
                 verificationId: 1,
+                body: {},
             });
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
@@ -868,12 +915,13 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1:resend")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(503)
             .jsonBody(rawResponseBody)
@@ -882,6 +930,7 @@ describe("ContactVerificationClient", () => {
         await expect(async () => {
             return await client.contactVerification.resendContactVerificationEmail({
                 verificationId: 1,
+                body: {},
             });
         }).rejects.toThrow(Namecom.ServiceUnavailableError);
     });
@@ -894,12 +943,13 @@ describe("ContactVerificationClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/contacts/verify/1:resend")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
@@ -908,6 +958,7 @@ describe("ContactVerificationClient", () => {
         await expect(async () => {
             return await client.contactVerification.resendContactVerificationEmail({
                 verificationId: 1,
+                body: {},
             });
         }).rejects.toThrow(Namecom.GatewayTimeoutError);
     });

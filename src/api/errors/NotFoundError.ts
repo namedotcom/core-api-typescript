@@ -5,6 +5,8 @@ import * as errors from "../../errors/index.js";
 import type * as Namecom from "../index.js";
 
 export class NotFoundError extends errors.NamecomError {
+    public declare readonly body: Namecom.NotFound404;
+
     constructor(body: Namecom.NotFound404, rawResponse?: core.RawResponse) {
         super({
             message: "NotFoundError",

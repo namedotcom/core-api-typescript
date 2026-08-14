@@ -4,6 +4,7 @@ import type { BaseClientOptions, BaseRequestOptions } from "../../../../BaseClie
 import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "../../../../BaseClient.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import * as core from "../../../../core/index.js";
+import { mergeAdditionalBodyParameters } from "../../../../core/requestBody.js";
 import * as environments from "../../../../environments.js";
 import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCodeError.js";
 import * as errors from "../../../../errors/index.js";
@@ -40,6 +41,8 @@ export class DomainsClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.domains.listDomains()
@@ -215,6 +218,8 @@ export class DomainsClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.domains.createDomain({
@@ -377,7 +382,7 @@ export class DomainsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -461,6 +466,8 @@ export class DomainsClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.domains.getDomain({
@@ -555,6 +562,8 @@ export class DomainsClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.domains.updateDomain({
@@ -594,7 +603,7 @@ export class DomainsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -654,7 +663,7 @@ export class DomainsClient {
     /**
      * @deprecated
      *
-     * Turns off automatic renewal for a domain.  **DEPRECATED** This endpoint is deprecated in favor of the new UpdateDomain API. This will be removed in a future release.
+     * Turns off automatic renewal for a domain. **DEPRECATED** This endpoint is deprecated in favor of the new UpdateDomain API. This will be removed in a future release.
      *
      * @param {Namecom.DisableAutorenewRequest} request
      * @param {DomainsClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -670,10 +679,13 @@ export class DomainsClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.domains.disableAutorenew({
-     *         domainName: "example.com"
+     *         domainName: "example.com",
+     *         body: {}
      *     })
      */
     public disableAutorenew(
@@ -687,7 +699,7 @@ export class DomainsClient {
         request: Namecom.DisableAutorenewRequest,
         requestOptions?: DomainsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Namecom.Domain>> {
-        const { domainName } = request;
+        const { domainName, body: _body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -703,7 +715,10 @@ export class DomainsClient {
             ),
             method: "POST",
             headers: _headers,
+            contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            requestType: "json",
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -777,10 +792,13 @@ export class DomainsClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.domains.disableWhoisPrivacy({
-     *         domainName: "example.com"
+     *         domainName: "example.com",
+     *         body: {}
      *     })
      */
     public disableWhoisPrivacy(
@@ -794,7 +812,7 @@ export class DomainsClient {
         request: Namecom.DisableWhoisPrivacyRequest,
         requestOptions?: DomainsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Namecom.Domain>> {
-        const { domainName } = request;
+        const { domainName, body: _body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -810,7 +828,10 @@ export class DomainsClient {
             ),
             method: "POST",
             headers: _headers,
+            contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            requestType: "json",
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -884,10 +905,13 @@ export class DomainsClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.domains.enableAutorenew({
-     *         domainName: "example.com"
+     *         domainName: "example.com",
+     *         body: {}
      *     })
      */
     public enableAutorenew(
@@ -901,7 +925,7 @@ export class DomainsClient {
         request: Namecom.EnableAutorenewRequest,
         requestOptions?: DomainsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Namecom.Domain>> {
-        const { domainName } = request;
+        const { domainName, body: _body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -917,7 +941,10 @@ export class DomainsClient {
             ),
             method: "POST",
             headers: _headers,
+            contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            requestType: "json",
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -991,10 +1018,13 @@ export class DomainsClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.domains.enableWhoisPrivacy({
-     *         domainName: "domainName"
+     *         domainName: "domainName",
+     *         body: {}
      *     })
      */
     public enableWhoisPrivacy(
@@ -1008,7 +1038,7 @@ export class DomainsClient {
         request: Namecom.EnableWhoisPrivacyRequest,
         requestOptions?: DomainsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Namecom.Domain>> {
-        const { domainName } = request;
+        const { domainName, body: _body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -1024,7 +1054,10 @@ export class DomainsClient {
             ),
             method: "POST",
             headers: _headers,
+            contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            requestType: "json",
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1095,6 +1128,8 @@ export class DomainsClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.domains.getAuthCodeForDomain({
@@ -1210,6 +1245,8 @@ export class DomainsClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.domains.getPricingForDomain({
@@ -1325,10 +1362,13 @@ export class DomainsClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.domains.lockDomain({
-     *         domainName: "example.com"
+     *         domainName: "example.com",
+     *         body: {}
      *     })
      */
     public lockDomain(
@@ -1342,7 +1382,7 @@ export class DomainsClient {
         request: Namecom.LockDomainRequest,
         requestOptions?: DomainsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Namecom.Domain>> {
-        const { domainName } = request;
+        const { domainName, body: _body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -1358,7 +1398,10 @@ export class DomainsClient {
             ),
             method: "POST",
             headers: _headers,
+            contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            requestType: "json",
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1432,6 +1475,8 @@ export class DomainsClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.domains.purchasePrivacy({
@@ -1470,7 +1515,7 @@ export class DomainsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1550,6 +1595,8 @@ export class DomainsClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.domains.renewDomain({
@@ -1586,7 +1633,7 @@ export class DomainsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1665,6 +1712,8 @@ export class DomainsClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.domains.setContacts({
@@ -1701,7 +1750,7 @@ export class DomainsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1773,6 +1822,8 @@ export class DomainsClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.domains.setNameservers({
@@ -1810,7 +1861,7 @@ export class DomainsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1884,10 +1935,13 @@ export class DomainsClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.domains.unlockDomain({
-     *         domainName: "domainName"
+     *         domainName: "domainName",
+     *         body: {}
      *     })
      */
     public unlockDomain(
@@ -1901,7 +1955,7 @@ export class DomainsClient {
         request: Namecom.UnlockDomainRequest,
         requestOptions?: DomainsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Namecom.Domain>> {
-        const { domainName } = request;
+        const { domainName, body: _body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -1917,7 +1971,10 @@ export class DomainsClient {
             ),
             method: "POST",
             headers: _headers,
+            contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            requestType: "json",
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1998,6 +2055,8 @@ export class DomainsClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.domains.checkAvailability({
@@ -2033,7 +2092,7 @@ export class DomainsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: request,
+            body: mergeAdditionalBodyParameters(request, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -2117,6 +2176,8 @@ export class DomainsClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.domains.search({
@@ -2152,7 +2213,7 @@ export class DomainsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: request,
+            body: mergeAdditionalBodyParameters(request, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -2223,6 +2284,8 @@ export class DomainsClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.domains.zoneCheck({
@@ -2258,7 +2321,7 @@ export class DomainsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: request,
+            body: mergeAdditionalBodyParameters(request, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

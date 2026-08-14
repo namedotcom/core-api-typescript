@@ -5,6 +5,8 @@ import * as errors from "../../errors/index.js";
 import type * as Namecom from "../index.js";
 
 export class UnprocessableEntityError extends errors.NamecomError {
+    public declare readonly body: Namecom.UnprocessableEntity422;
+
     constructor(body: Namecom.UnprocessableEntity422, rawResponse?: core.RawResponse) {
         super({
             message: "UnprocessableEntityError",

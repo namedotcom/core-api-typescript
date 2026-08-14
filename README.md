@@ -3,7 +3,17 @@
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=https%3A%2F%2Fgithub.com%2Fnamedotcom%2Fcore-api-typescript)
 [![npm shield](https://img.shields.io/npm/v/@namecom/core-api)](https://www.npmjs.com/package/@namecom/core-api)
 
-The name.com Core API TypeScript library provides convenient access to the name.com Core API APIs from TypeScript.
+Official SDK for the name.com Core API.
+
+List endpoints are paginated: pass the `page` query parameter to page through
+results, and read the response `links` header for next/previous page links.
+
+Write endpoints that accept an `X-Idempotency-Key` header are safe to retry —
+reusing the same key returns the original result instead of repeating the
+operation. Keys are valid for 12 hours.
+
+See https://docs.name.com for full guides and the API reference.
+
 
 ## Table of Contents
 
@@ -50,6 +60,59 @@ import { NamecomClient } from "@namecom/core-api";
 
 const client = new NamecomClient({ username: "YOUR_USERNAME", password: "YOUR_PASSWORD" });
 await client.hello();
+```
+
+```typescript
+import { NamecomClient } from "@namecom/core-api";
+
+const client = new NamecomClient({ username: "YOUR_USERNAME", password: "YOUR_PASSWORD" });
+await client.accountInfo.checkAccountBalance();
+```
+
+```typescript
+import { NamecomClient } from "@namecom/core-api";
+
+const client = new NamecomClient({ username: "YOUR_USERNAME", password: "YOUR_PASSWORD" });
+await client.domains.search({
+    keyword: "mydomain"
+});
+```
+
+```typescript
+import { NamecomClient } from "@namecom/core-api";
+
+const client = new NamecomClient({ username: "YOUR_USERNAME", password: "YOUR_PASSWORD" });
+await client.domains.listDomains();
+```
+
+```typescript
+import { NamecomClient } from "@namecom/core-api";
+
+const client = new NamecomClient({ username: "YOUR_USERNAME", password: "YOUR_PASSWORD" });
+await client.domains.getDomain({
+    domainName: "example.com"
+});
+```
+
+```typescript
+import { NamecomClient } from "@namecom/core-api";
+
+const client = new NamecomClient({ username: "YOUR_USERNAME", password: "YOUR_PASSWORD" });
+await client.dns.listRecords({
+    domainName: "domainName"
+});
+```
+
+```typescript
+import { NamecomClient } from "@namecom/core-api";
+
+const client = new NamecomClient({ username: "YOUR_USERNAME", password: "YOUR_PASSWORD" });
+await client.dns.createRecord({
+    domainName: "domainName",
+    answer: "answer",
+    host: "host",
+    type: "A"
+});
 ```
 
 ## Environments

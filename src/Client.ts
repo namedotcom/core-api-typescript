@@ -131,6 +131,8 @@ export class NamecomClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.hello()

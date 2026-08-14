@@ -2828,7 +2828,7 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = {
             domainName: "example.com",
             createDate: "2023-01-15T14:30:00Z",
@@ -2911,6 +2911,7 @@ describe("DomainsClient", () => {
         server
             .mockEndpoint()
             .post("/core/v1/domains/example.com:disableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
@@ -2918,6 +2919,7 @@ describe("DomainsClient", () => {
 
         const response = await client.domains.disableAutorenew({
             domainName: "example.com",
+            body: {},
         });
         expect(response).toEqual(rawResponseBody);
     });
@@ -2930,12 +2932,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:disableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(400)
             .jsonBody(rawResponseBody)
@@ -2944,6 +2947,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.disableAutorenew({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.BadRequestError);
     });
@@ -2956,12 +2960,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:disableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(401)
             .jsonBody(rawResponseBody)
@@ -2970,6 +2975,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.disableAutorenew({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
@@ -2982,12 +2988,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:disableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(403)
             .jsonBody(rawResponseBody)
@@ -2996,6 +3003,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.disableAutorenew({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
@@ -3008,12 +3016,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:disableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(404)
             .jsonBody(rawResponseBody)
@@ -3022,6 +3031,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.disableAutorenew({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.NotFoundError);
     });
@@ -3034,12 +3044,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:disableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(405)
             .jsonBody(rawResponseBody)
@@ -3048,6 +3059,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.disableAutorenew({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
@@ -3060,12 +3072,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:disableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(415)
             .jsonBody(rawResponseBody)
@@ -3074,6 +3087,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.disableAutorenew({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnsupportedMediaTypeError);
     });
@@ -3086,12 +3100,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:disableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
@@ -3100,6 +3115,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.disableAutorenew({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
@@ -3112,12 +3128,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:disableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(500)
             .jsonBody(rawResponseBody)
@@ -3126,6 +3143,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.disableAutorenew({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.InternalServerError);
     });
@@ -3138,12 +3156,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:disableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(502)
             .jsonBody(rawResponseBody)
@@ -3152,6 +3171,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.disableAutorenew({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
@@ -3164,12 +3184,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:disableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(503)
             .jsonBody(rawResponseBody)
@@ -3178,6 +3199,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.disableAutorenew({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.ServiceUnavailableError);
     });
@@ -3190,12 +3212,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:disableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
@@ -3204,6 +3227,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.disableAutorenew({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.GatewayTimeoutError);
     });
@@ -3216,7 +3240,7 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = {
             domainName: "example.com",
             createDate: "2023-01-15T14:30:00Z",
@@ -3299,6 +3323,7 @@ describe("DomainsClient", () => {
         server
             .mockEndpoint()
             .post("/core/v1/domains/example.com:disableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
@@ -3306,6 +3331,7 @@ describe("DomainsClient", () => {
 
         const response = await client.domains.disableWhoisPrivacy({
             domainName: "example.com",
+            body: {},
         });
         expect(response).toEqual(rawResponseBody);
     });
@@ -3318,12 +3344,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:disableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(400)
             .jsonBody(rawResponseBody)
@@ -3332,6 +3359,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.disableWhoisPrivacy({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.BadRequestError);
     });
@@ -3344,12 +3372,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:disableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(401)
             .jsonBody(rawResponseBody)
@@ -3358,6 +3387,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.disableWhoisPrivacy({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
@@ -3370,12 +3400,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:disableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(403)
             .jsonBody(rawResponseBody)
@@ -3384,6 +3415,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.disableWhoisPrivacy({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
@@ -3396,12 +3428,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:disableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(404)
             .jsonBody(rawResponseBody)
@@ -3410,6 +3443,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.disableWhoisPrivacy({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.NotFoundError);
     });
@@ -3422,12 +3456,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:disableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(405)
             .jsonBody(rawResponseBody)
@@ -3436,6 +3471,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.disableWhoisPrivacy({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
@@ -3448,12 +3484,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:disableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(415)
             .jsonBody(rawResponseBody)
@@ -3462,6 +3499,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.disableWhoisPrivacy({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnsupportedMediaTypeError);
     });
@@ -3474,12 +3512,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:disableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
@@ -3488,6 +3527,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.disableWhoisPrivacy({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
@@ -3500,12 +3540,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:disableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(500)
             .jsonBody(rawResponseBody)
@@ -3514,6 +3555,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.disableWhoisPrivacy({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.InternalServerError);
     });
@@ -3526,12 +3568,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:disableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(502)
             .jsonBody(rawResponseBody)
@@ -3540,6 +3583,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.disableWhoisPrivacy({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
@@ -3552,12 +3596,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:disableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(503)
             .jsonBody(rawResponseBody)
@@ -3566,6 +3611,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.disableWhoisPrivacy({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.ServiceUnavailableError);
     });
@@ -3578,12 +3624,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:disableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
@@ -3592,6 +3639,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.disableWhoisPrivacy({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.GatewayTimeoutError);
     });
@@ -3604,7 +3652,7 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = {
             domainName: "example.com",
             createDate: "2023-01-15T14:30:00Z",
@@ -3687,6 +3735,7 @@ describe("DomainsClient", () => {
         server
             .mockEndpoint()
             .post("/core/v1/domains/example.com:enableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
@@ -3694,6 +3743,7 @@ describe("DomainsClient", () => {
 
         const response = await client.domains.enableAutorenew({
             domainName: "example.com",
+            body: {},
         });
         expect(response).toEqual(rawResponseBody);
     });
@@ -3706,12 +3756,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(400)
             .jsonBody(rawResponseBody)
@@ -3720,6 +3771,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.enableAutorenew({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.BadRequestError);
     });
@@ -3732,12 +3784,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(401)
             .jsonBody(rawResponseBody)
@@ -3746,6 +3799,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.enableAutorenew({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
@@ -3758,12 +3812,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(403)
             .jsonBody(rawResponseBody)
@@ -3772,6 +3827,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.enableAutorenew({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
@@ -3784,12 +3840,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(404)
             .jsonBody(rawResponseBody)
@@ -3798,6 +3855,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.enableAutorenew({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.NotFoundError);
     });
@@ -3810,12 +3868,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(405)
             .jsonBody(rawResponseBody)
@@ -3824,6 +3883,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.enableAutorenew({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
@@ -3836,12 +3896,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(415)
             .jsonBody(rawResponseBody)
@@ -3850,6 +3911,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.enableAutorenew({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnsupportedMediaTypeError);
     });
@@ -3862,12 +3924,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
@@ -3876,6 +3939,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.enableAutorenew({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
@@ -3888,12 +3952,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(500)
             .jsonBody(rawResponseBody)
@@ -3902,6 +3967,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.enableAutorenew({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.InternalServerError);
     });
@@ -3914,12 +3980,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(502)
             .jsonBody(rawResponseBody)
@@ -3928,6 +3995,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.enableAutorenew({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
@@ -3940,12 +4008,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(503)
             .jsonBody(rawResponseBody)
@@ -3954,6 +4023,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.enableAutorenew({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.ServiceUnavailableError);
     });
@@ -3966,12 +4036,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableAutorenew")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
@@ -3980,6 +4051,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.enableAutorenew({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.GatewayTimeoutError);
     });
@@ -3992,7 +4064,7 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = {
             domainName: "example.com",
             createDate: "2023-01-15T14:30:00Z",
@@ -4075,6 +4147,7 @@ describe("DomainsClient", () => {
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
@@ -4082,6 +4155,7 @@ describe("DomainsClient", () => {
 
         const response = await client.domains.enableWhoisPrivacy({
             domainName: "domainName",
+            body: {},
         });
         expect(response).toEqual(rawResponseBody);
     });
@@ -4094,12 +4168,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(400)
             .jsonBody(rawResponseBody)
@@ -4108,6 +4183,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.enableWhoisPrivacy({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.BadRequestError);
     });
@@ -4120,12 +4196,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(401)
             .jsonBody(rawResponseBody)
@@ -4134,6 +4211,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.enableWhoisPrivacy({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
@@ -4146,12 +4224,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(403)
             .jsonBody(rawResponseBody)
@@ -4160,6 +4239,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.enableWhoisPrivacy({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
@@ -4172,12 +4252,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(404)
             .jsonBody(rawResponseBody)
@@ -4186,6 +4267,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.enableWhoisPrivacy({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.NotFoundError);
     });
@@ -4198,12 +4280,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(405)
             .jsonBody(rawResponseBody)
@@ -4212,6 +4295,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.enableWhoisPrivacy({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
@@ -4224,12 +4308,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(415)
             .jsonBody(rawResponseBody)
@@ -4238,6 +4323,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.enableWhoisPrivacy({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnsupportedMediaTypeError);
     });
@@ -4250,12 +4336,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
@@ -4264,6 +4351,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.enableWhoisPrivacy({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
@@ -4276,12 +4364,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(500)
             .jsonBody(rawResponseBody)
@@ -4290,6 +4379,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.enableWhoisPrivacy({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.InternalServerError);
     });
@@ -4302,12 +4392,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(502)
             .jsonBody(rawResponseBody)
@@ -4316,6 +4407,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.enableWhoisPrivacy({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
@@ -4328,12 +4420,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(503)
             .jsonBody(rawResponseBody)
@@ -4342,6 +4435,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.enableWhoisPrivacy({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.ServiceUnavailableError);
     });
@@ -4354,12 +4448,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:enableWhoisPrivacy")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
@@ -4368,6 +4463,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.enableWhoisPrivacy({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.GatewayTimeoutError);
     });
@@ -4977,7 +5073,7 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = {
             domainName: "example.com",
             createDate: "2023-01-15T14:30:00Z",
@@ -5060,6 +5156,7 @@ describe("DomainsClient", () => {
         server
             .mockEndpoint()
             .post("/core/v1/domains/example.com:lock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
@@ -5067,6 +5164,7 @@ describe("DomainsClient", () => {
 
         const response = await client.domains.lockDomain({
             domainName: "example.com",
+            body: {},
         });
         expect(response).toEqual(rawResponseBody);
     });
@@ -5079,12 +5177,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:lock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(400)
             .jsonBody(rawResponseBody)
@@ -5093,6 +5192,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.lockDomain({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.BadRequestError);
     });
@@ -5105,12 +5205,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:lock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(401)
             .jsonBody(rawResponseBody)
@@ -5119,6 +5220,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.lockDomain({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
@@ -5131,12 +5233,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:lock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(403)
             .jsonBody(rawResponseBody)
@@ -5145,6 +5248,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.lockDomain({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
@@ -5157,12 +5261,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:lock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(404)
             .jsonBody(rawResponseBody)
@@ -5171,6 +5276,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.lockDomain({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.NotFoundError);
     });
@@ -5183,12 +5289,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:lock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(405)
             .jsonBody(rawResponseBody)
@@ -5197,6 +5304,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.lockDomain({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
@@ -5209,12 +5317,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:lock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(415)
             .jsonBody(rawResponseBody)
@@ -5223,6 +5332,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.lockDomain({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnsupportedMediaTypeError);
     });
@@ -5235,12 +5345,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:lock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
@@ -5249,6 +5360,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.lockDomain({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
@@ -5261,12 +5373,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:lock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(500)
             .jsonBody(rawResponseBody)
@@ -5275,6 +5388,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.lockDomain({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.InternalServerError);
     });
@@ -5287,12 +5401,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:lock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(502)
             .jsonBody(rawResponseBody)
@@ -5301,6 +5416,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.lockDomain({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
@@ -5313,12 +5429,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:lock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(503)
             .jsonBody(rawResponseBody)
@@ -5327,6 +5444,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.lockDomain({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.ServiceUnavailableError);
     });
@@ -5339,12 +5457,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:lock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
@@ -5353,6 +5472,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.lockDomain({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.GatewayTimeoutError);
     });
@@ -7068,7 +7188,7 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = {
             domainName: "example.com",
             createDate: "2023-01-15T14:30:00Z",
@@ -7151,6 +7271,7 @@ describe("DomainsClient", () => {
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:unlock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
@@ -7158,6 +7279,7 @@ describe("DomainsClient", () => {
 
         const response = await client.domains.unlockDomain({
             domainName: "domainName",
+            body: {},
         });
         expect(response).toEqual(rawResponseBody);
     });
@@ -7170,12 +7292,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:unlock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(400)
             .jsonBody(rawResponseBody)
@@ -7184,6 +7307,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.unlockDomain({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.BadRequestError);
     });
@@ -7196,12 +7320,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:unlock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(401)
             .jsonBody(rawResponseBody)
@@ -7210,6 +7335,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.unlockDomain({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
@@ -7222,12 +7348,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:unlock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(403)
             .jsonBody(rawResponseBody)
@@ -7236,6 +7363,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.unlockDomain({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
@@ -7248,12 +7376,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:unlock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(404)
             .jsonBody(rawResponseBody)
@@ -7262,6 +7391,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.unlockDomain({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.NotFoundError);
     });
@@ -7274,12 +7404,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:unlock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(405)
             .jsonBody(rawResponseBody)
@@ -7288,6 +7419,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.unlockDomain({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
@@ -7300,12 +7432,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:unlock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(415)
             .jsonBody(rawResponseBody)
@@ -7314,6 +7447,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.unlockDomain({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnsupportedMediaTypeError);
     });
@@ -7326,12 +7460,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:unlock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
@@ -7340,6 +7475,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.unlockDomain({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
@@ -7352,12 +7488,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:unlock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(500)
             .jsonBody(rawResponseBody)
@@ -7366,6 +7503,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.unlockDomain({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.InternalServerError);
     });
@@ -7378,12 +7516,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:unlock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(502)
             .jsonBody(rawResponseBody)
@@ -7392,6 +7531,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.unlockDomain({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
@@ -7404,12 +7544,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:unlock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(503)
             .jsonBody(rawResponseBody)
@@ -7418,6 +7559,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.unlockDomain({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.ServiceUnavailableError);
     });
@@ -7430,12 +7572,13 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
             .mockEndpoint()
             .post("/core/v1/domains/domainName:unlock")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
@@ -7444,6 +7587,7 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.unlockDomain({
                 domainName: "domainName",
+                body: {},
             });
         }).rejects.toThrow(Namecom.GatewayTimeoutError);
     });

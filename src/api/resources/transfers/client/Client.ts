@@ -4,6 +4,7 @@ import type { BaseClientOptions, BaseRequestOptions } from "../../../../BaseClie
 import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "../../../../BaseClient.js";
 import { mergeHeaders } from "../../../../core/headers.js";
 import * as core from "../../../../core/index.js";
+import { mergeAdditionalBodyParameters } from "../../../../core/requestBody.js";
 import * as environments from "../../../../environments.js";
 import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCodeError.js";
 import * as errors from "../../../../errors/index.js";
@@ -41,6 +42,8 @@ export class TransfersClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.transfers.listTransfers()
@@ -145,6 +148,8 @@ export class TransfersClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.transfers.createTransfer({
@@ -181,7 +186,7 @@ export class TransfersClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: request,
+            body: mergeAdditionalBodyParameters(request, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -254,6 +259,8 @@ export class TransfersClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.transfers.getTransfer({
@@ -375,10 +382,13 @@ export class TransfersClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.transfers.cancelTransfer({
-     *         domainName: "domainName"
+     *         domainName: "domainName",
+     *         body: {}
      *     })
      */
     public cancelTransfer(
@@ -392,7 +402,7 @@ export class TransfersClient {
         request: Namecom.CancelTransferRequest,
         requestOptions?: TransfersClient.RequestOptions,
     ): Promise<core.WithRawResponse<Namecom.Transfer>> {
-        const { domainName } = request;
+        const { domainName, body: _body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -408,7 +418,10 @@ export class TransfersClient {
             ),
             method: "POST",
             headers: _headers,
+            contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            requestType: "json",
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -485,10 +498,13 @@ export class TransfersClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.transfers.cancelOutboundTransfer({
-     *         domainName: "example.com"
+     *         domainName: "example.com",
+     *         body: {}
      *     })
      */
     public cancelOutboundTransfer(
@@ -502,7 +518,7 @@ export class TransfersClient {
         request: Namecom.CancelOutboundTransferRequest,
         requestOptions?: TransfersClient.RequestOptions,
     ): Promise<core.WithRawResponse<Namecom.CancelTransferOutResponse>> {
-        const { domainName } = request;
+        const { domainName, body: _body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -518,7 +534,10 @@ export class TransfersClient {
             ),
             method: "POST",
             headers: _headers,
+            contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            requestType: "json",
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -606,6 +625,8 @@ export class TransfersClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.transfers.createInternalTransferIn({
@@ -642,7 +663,7 @@ export class TransfersClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: request,
+            body: mergeAdditionalBodyParameters(request, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -725,6 +746,8 @@ export class TransfersClient {
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
      * @throws {@link Namecom.GatewayTimeoutError}
+     * @throws {@link errors.NamecomError}
+     * @throws {@link errors.NamecomTimeoutError}
      *
      * @example
      *     await client.transfers.getTransferEligibility({

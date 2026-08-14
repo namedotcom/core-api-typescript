@@ -507,7 +507,7 @@ await client.domains.updateDomain({
 <dl>
 <dd>
 
-Turns off automatic renewal for a domain.  **DEPRECATED** This endpoint is deprecated in favor of the new UpdateDomain API. This will be removed in a future release.
+Turns off automatic renewal for a domain. **DEPRECATED** This endpoint is deprecated in favor of the new UpdateDomain API. This will be removed in a future release.
 </dd>
 </dl>
 </dd>
@@ -523,7 +523,8 @@ Turns off automatic renewal for a domain.  **DEPRECATED** This endpoint is depre
 
 ```typescript
 await client.domains.disableAutorenew({
-    domainName: "example.com"
+    domainName: "example.com",
+    body: {}
 });
 
 ```
@@ -588,7 +589,8 @@ Disables WHOIS privacy protection on a domain. **DEPRECATED** This endpoint is d
 
 ```typescript
 await client.domains.disableWhoisPrivacy({
-    domainName: "example.com"
+    domainName: "example.com",
+    body: {}
 });
 
 ```
@@ -653,7 +655,8 @@ Turns on automatic renewal for a domain. **DEPRECATED** This endpoint is depreca
 
 ```typescript
 await client.domains.enableAutorenew({
-    domainName: "example.com"
+    domainName: "example.com",
+    body: {}
 });
 
 ```
@@ -718,7 +721,8 @@ Enables WHOIS privacy protection on a domain. **DEPRECATED** This endpoint is de
 
 ```typescript
 await client.domains.enableWhoisPrivacy({
-    domainName: "domainName"
+    domainName: "domainName",
+    body: {}
 });
 
 ```
@@ -926,7 +930,8 @@ Locks a domain to prevent it from being transferred. **DEPRECATED** This endpoin
 
 ```typescript
 await client.domains.lockDomain({
-    domainName: "example.com"
+    domainName: "example.com",
+    body: {}
 });
 
 ```
@@ -1255,7 +1260,8 @@ Unlocks a domain to allow it to be transferred. **DEPRECATED** This endpoint is 
 
 ```typescript
 await client.domains.unlockDomain({
-    domainName: "domainName"
+    domainName: "domainName",
+    body: {}
 });
 
 ```
@@ -4116,7 +4122,8 @@ Non-cancelable statuses:
 
 ```typescript
 await client.transfers.cancelTransfer({
-    domainName: "domainName"
+    domainName: "domainName",
+    body: {}
 });
 
 ```
@@ -4183,7 +4190,8 @@ The endpoint validates that the domain exists and belongs to the authenticated a
 
 ```typescript
 await client.transfers.cancelOutboundTransfer({
-    domainName: "example.com"
+    domainName: "example.com",
+    body: {}
 });
 
 ```
@@ -4797,7 +4805,8 @@ This API is only available to approved reseller accounts. Contact name.com suppo
 ```typescript
 await client.contactVerification.verifyContact({
     "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
-    verificationId: 1
+    verificationId: 1,
+    body: {}
 });
 
 ```
@@ -4872,7 +4881,8 @@ On `429`, the response uses the standard error envelope, and `details` contains 
 ```typescript
 await client.contactVerification.resendContactVerificationEmail({
     "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
-    verificationId: 1
+    verificationId: 1,
+    body: {}
 });
 
 ```
