@@ -5,7 +5,6 @@ import type * as Namecom from "../../../../index.js";
 /**
  * @example
  *     {
- *         "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
  *         domain: {
  *             domainName: "example.com"
  *         }
@@ -13,7 +12,6 @@ import type * as Namecom from "../../../../index.js";
  *
  * @example
  *     {
- *         "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
  *         domain: {
  *             domainName: "example.com"
  *         },
@@ -22,7 +20,6 @@ import type * as Namecom from "../../../../index.js";
  *
  * @example
  *     {
- *         "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
  *         domain: {
  *             domainName: "premiumexample.com"
  *         },
@@ -33,7 +30,6 @@ import type * as Namecom from "../../../../index.js";
  *
  * @example
  *     {
- *         "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
  *         domain: {
  *             domainName: "premiumexample.com"
  *         },
@@ -44,7 +40,6 @@ import type * as Namecom from "../../../../index.js";
  *
  * @example
  *     {
- *         "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
  *         domain: {
  *             domainName: "rarename.com"
  *         },
@@ -55,7 +50,6 @@ import type * as Namecom from "../../../../index.js";
  *
  * @example
  *     {
- *         "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
  *         domain: {
  *             domainName: "expiringexample.com"
  *         },
@@ -66,7 +60,6 @@ import type * as Namecom from "../../../../index.js";
  *
  * @example
  *     {
- *         "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
  *         domain: {
  *             domainName: "backorderexample.com"
  *         },
@@ -76,7 +69,6 @@ import type * as Namecom from "../../../../index.js";
  *
  * @example
  *     {
- *         "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
  *         domain: {
  *             domainName: "example.com",
  *             contacts: {
@@ -98,7 +90,6 @@ import type * as Namecom from "../../../../index.js";
  *
  * @example
  *     {
- *         "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
  *         domain: {
  *             domainName: "ex\u00E1mple.com"
  *         },
@@ -110,7 +101,6 @@ import type * as Namecom from "../../../../index.js";
  *
  * @example
  *     {
- *         "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
  *         domain: {
  *             domainName: "example.se"
  *         },
@@ -122,7 +112,6 @@ import type * as Namecom from "../../../../index.js";
  *
  * @example
  *     {
- *         "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
  *         domain: {
  *             domainName: "tiktok.page"
  *         },
@@ -134,8 +123,6 @@ import type * as Namecom from "../../../../index.js";
  *     }
  */
 export interface CreateDomainRequest {
-    /** A unique string (e.g., a UUID v4) to make the request idempotent. This key ensures that if the request is retried, the operation will not be performed multiple times. Subsequent requests with the same key will return the original result. */
-    "X-Idempotency-Key"?: string;
     domain: Namecom.DomainCreatePayload;
     /** PurchasePrice is the price in USD for purchasing this domain for the minimum time period (typically 1 year). PurchasePrice is required if purchaseType is not "registration" or if it is a premium domain. If privacyEnabled is set, the regular price for Whois Privacy protection will be added automatically. If VAT tax applies, it will also be added automatically. */
     purchasePrice?: number;

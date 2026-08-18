@@ -322,7 +322,6 @@ When a new domain registration is created and a contact is submitted, name.com m
 
 ```typescript
 await client.domains.createDomain({
-    "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
     domain: {
         domainName: "example.com"
     }
@@ -350,7 +349,7 @@ await client.domains.createDomain({
 <dl>
 <dd>
 
-**requestOptions:** `DomainsClient.RequestOptions` 
+**requestOptions:** `DomainsClient.IdempotentRequestOptions` 
     
 </dd>
 </dl>
@@ -996,7 +995,6 @@ Adds or renews WHOIS privacy protection for a domain. This is used to ensure per
 
 ```typescript
 await client.domains.purchasePrivacy({
-    "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
     domainName: "domainName"
 });
 
@@ -1022,7 +1020,7 @@ await client.domains.purchasePrivacy({
 <dl>
 <dd>
 
-**requestOptions:** `DomainsClient.RequestOptions` 
+**requestOptions:** `DomainsClient.IdempotentRequestOptions` 
     
 </dd>
 </dl>
@@ -3842,7 +3840,6 @@ This endpoint supports idempotent requests via the `X-Idempotency-Key` header. I
 
 ```typescript
 await client.refunds.processRefund({
-    "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
     orderId: 123456,
     orderItemIds: [987654]
 });
@@ -3869,7 +3866,7 @@ await client.refunds.processRefund({
 <dl>
 <dd>
 
-**requestOptions:** `RefundsClient.RequestOptions` 
+**requestOptions:** `RefundsClient.IdempotentRequestOptions` 
     
 </dd>
 </dl>
@@ -4804,7 +4801,6 @@ This API is only available to approved reseller accounts. Contact name.com suppo
 
 ```typescript
 await client.contactVerification.verifyContact({
-    "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
     verificationId: 1,
     body: {}
 });
@@ -4831,7 +4827,7 @@ await client.contactVerification.verifyContact({
 <dl>
 <dd>
 
-**requestOptions:** `ContactVerificationClient.RequestOptions` 
+**requestOptions:** `ContactVerificationClient.IdempotentRequestOptions` 
     
 </dd>
 </dl>
@@ -4880,7 +4876,6 @@ On `429`, the response uses the standard error envelope, and `details` contains 
 
 ```typescript
 await client.contactVerification.resendContactVerificationEmail({
-    "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
     verificationId: 1,
     body: {}
 });
@@ -4907,7 +4902,7 @@ await client.contactVerification.resendContactVerificationEmail({
 <dl>
 <dd>
 
-**requestOptions:** `ContactVerificationClient.RequestOptions` 
+**requestOptions:** `ContactVerificationClient.IdempotentRequestOptions` 
     
 </dd>
 </dl>

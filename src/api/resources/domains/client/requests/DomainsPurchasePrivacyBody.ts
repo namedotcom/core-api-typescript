@@ -3,15 +3,12 @@
 /**
  * @example
  *     {
- *         "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
  *         domainName: "domainName"
  *     }
  */
 export interface DomainsPurchasePrivacyBody {
     /** DomainName is the domain to purchase Whois Privacy for. */
     domainName: string;
-    /** A unique string (e.g., a UUID v4) to make the request idempotent. This key ensures that if the request is retried, the operation will not be performed multiple times. Subsequent requests with the same key will return the original result. */
-    "X-Idempotency-Key"?: string;
     /** PurchasePrice is the (prorated) amount you expect to pay. */
     purchasePrice?: number;
     /** Years is the number of years you wish to purchase Whois Privacy for. Years defaults to 1 and cannot be more then the domain expiration date. */

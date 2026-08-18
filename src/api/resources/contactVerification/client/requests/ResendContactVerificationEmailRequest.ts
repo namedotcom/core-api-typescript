@@ -5,7 +5,6 @@ import type * as Namecom from "../../../../index.js";
 /**
  * @example
  *     {
- *         "X-Idempotency-Key": "083910ef-04e4-4bd1-a0bf-3737fe005ca8",
  *         verificationId: 1,
  *         body: {}
  *     }
@@ -13,7 +12,5 @@ import type * as Namecom from "../../../../index.js";
 export interface ResendContactVerificationEmailRequest {
     /** The verificationId for the pending contact verification record. */
     verificationId: number;
-    /** A unique string (e.g., a UUID v4) to make the request idempotent. This key ensures that if the request is retried, the operation will not be performed multiple times. Subsequent requests with the same key will return the original result. */
-    "X-Idempotency-Key"?: string;
     body: Namecom.EmptyObject;
 }

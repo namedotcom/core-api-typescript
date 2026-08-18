@@ -48,6 +48,10 @@ export interface BaseRequestOptions {
     stream?: { reconnectionEnabled?: boolean; maxReconnectionAttempts?: number };
 }
 
+export interface BaseIdempotentRequestOptions {
+    xIdempotencyKey?: string | undefined;
+}
+
 export type NormalizedClientOptions<T extends BaseClientOptions = BaseClientOptions> = T & {
     logging: core.logging.Logger;
     authProvider?: core.AuthProvider;
@@ -65,8 +69,8 @@ export function normalizeClientOptions<T extends BaseClientOptions = BaseClientO
         {
             "X-Fern-Language": "JavaScript",
             "X-Fern-SDK-Name": "@namecom/core-api",
-            "X-Fern-SDK-Version": "1.33.1",
-            "User-Agent": "@namecom/core-api/1.33.1",
+            "X-Fern-SDK-Version": "1.33.2",
+            "User-Agent": "@namecom/core-api/1.33.2",
             "X-Fern-Runtime": core.RUNTIME.type,
             "X-Fern-Runtime-Version": core.RUNTIME.version,
         },
