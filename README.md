@@ -82,6 +82,22 @@ await client.domains.search({
 import { NamecomClient } from "@namecom/core-api";
 
 const client = new NamecomClient({ username: "YOUR_USERNAME", password: "YOUR_PASSWORD" });
+await client.domains.createDomain({
+    domain: {
+        domainName: "tiktok.page"
+    },
+    claims: {
+        claimId: "8c3027d30000000000382500785",
+        notBefore: "2020-01-01T00:00:00Z",
+        notAfter: "2030-01-01T00:00:00Z"
+    }
+});
+```
+
+```typescript
+import { NamecomClient } from "@namecom/core-api";
+
+const client = new NamecomClient({ username: "YOUR_USERNAME", password: "YOUR_PASSWORD" });
 await client.domains.listDomains();
 ```
 

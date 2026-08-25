@@ -7,10 +7,10 @@
  *     }
  */
 export interface DomainsPurchasePrivacyBody {
-    /** DomainName is the domain to purchase Whois Privacy for. */
+    /** DomainName is the domain to enable or extend Whois Privacy for. */
     domainName: string;
-    /** PurchasePrice is the (prorated) amount you expect to pay. */
+    /** WHOIS privacy is free for API users. This field does not add a privacy fee. */
     purchasePrice?: number;
-    /** Years is the number of years you wish to purchase Whois Privacy for. Years defaults to 1 and cannot be more then the domain expiration date. */
+    /** Years is the number of years to enable or extend Whois Privacy for. Years defaults to 1 and cannot be more then the domain expiration date. */
     years?: number;
 }

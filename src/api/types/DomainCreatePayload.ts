@@ -6,6 +6,8 @@ import type * as Namecom from "../index.js";
  * The payload to be sent for when making a request to purchase a domain.
  */
 export interface DomainCreatePayload {
+    /** Whether to include Whois Privacy with the registration. Whois Privacy is free. If omitted, the account default from account settings is used. Privacy is only added when the TLD supports it. */
+    privacyEnabled?: boolean | undefined;
     contacts?: Namecom.ContactsRequest | undefined;
     /** The punycode-encoded value of the domain name. */
     domainName?: string | undefined;
@@ -21,8 +23,6 @@ export interface DomainCreatePayload {
     locks?: string[] | undefined;
     /** When present, the domain has an active ICANN-mandated transfer lock (new registration, transfer-in, or material registrant contact change) that blocks client unlock via the API until this time. When omitted, there is no active policy transfer lock with a known expiry — the domain may still be locked (`locked: true`) due to a voluntary user lock. Does not represent RegistrarLock, AccountLock, verification holds, trademark-claim locks, or admin TransferLock with no expiry date. */
     transferLockExpiresAt?: string | undefined;
-    /** Indicates if Whois Privacy is enabled for this domain. */
-    privacyEnabled?: boolean | undefined;
     /** The list of nameservers assigned to this domain. If unspecified, it defaults to the account's default nameservers. */
     nameservers?: string[] | undefined;
     /** The cost to renew the domain. This may be required for the RenewDomain operation. */

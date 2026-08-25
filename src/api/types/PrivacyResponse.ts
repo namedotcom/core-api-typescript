@@ -3,12 +3,12 @@
 import type * as Namecom from "../index.js";
 
 /**
- * PrivacyResponse contains the updated domain info as well as the order info for the newly purchased Whois Privacy.
+ * PrivacyResponse contains the updated domain info as well as the order info for the Whois Privacy that was enabled or extended.
  */
 export interface PrivacyResponse {
     domain?: Namecom.DomainResponsePayload | undefined;
     /** Order is an identifier for this purchase. */
     order: number;
-    /** TotalPaid is the total amount paid, including VAT. */
+    /** TotalPaid is the total amount paid, including VAT when applicable. Whois Privacy is free and is not included in this amount. */
     totalPaid: number;
 }

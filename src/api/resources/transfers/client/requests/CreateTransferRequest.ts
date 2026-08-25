@@ -12,7 +12,7 @@ export interface CreateTransferRequest {
     authCode: string;
     /** DomainName is the domain you want to transfer to name.com. */
     domainName: string;
-    /** PrivacyEnabled is a flag on whether to purchase Whois Privacy with the transfer. If this flag is omitted from the request, the system will check the account's Whois Privacy auto-add settings. If auto-add is enabled in your account settings, Whois Privacy will be added by default, provided the TLD supports it. */
+    /** Whether to include Whois Privacy with the transfer. Whois Privacy is free. If omitted, the account default from account settings is used. Privacy is only added when the TLD supports it. */
     privacyEnabled?: boolean;
     /** PurchasePrice is the USD inbound transfer fee, before VAT. VAT is applied when applicable and must not be included here. If sent, must match Get Pricing `transferPrice` exactly or the request will fail.. **Omit** for standard (non-premium) transfers. **Required** for premium transfers — use `transferPrice` from [Get Pricing](/api/v1/reference/domains/get-pricing-for-domain). */
     purchasePrice?: number;

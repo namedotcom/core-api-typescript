@@ -9,6 +9,6 @@ export interface CreateDomainResponse {
     domain: Namecom.DomainResponsePayload;
     /** Order is an identifier for this purchase. */
     order: number;
-    /** TotalPaid is the total amount paid, including VAT and Whois privacy protection. */
+    /** TotalPaid is the total amount paid, including VAT when applicable. Whois Privacy is free and is not included in this amount. */
     totalPaid: number;
 }

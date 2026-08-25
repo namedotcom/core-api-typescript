@@ -8,7 +8,7 @@ import type * as Namecom from "../index.js";
 export interface CreateTransferResponse {
     /** Order is an identifier for this purchase. */
     order: number;
-    /** TotalPaid is the total amount paid, including VAT and Whois Privacy. */
+    /** TotalPaid is the total amount paid, including VAT when applicable. Whois Privacy is free and is not included in this amount. */
     totalPaid: number;
     transfer: Namecom.Transfer;
     /** Optional transfer warnings surfaced by the API when non-blocking registry statuses are detected. */
