@@ -142,7 +142,7 @@ export class UrlForwardingsClient {
     /**
      * Sets up a new URL forwarding (redirect) for a domain or subdomain. If this is the first URL forwarding entry, it may modify the A records for the domain accordingly. Note that changes may take up to 24 hours to fully propagate.
      *
-     * @param {Namecom.CreateUrlForwardingRequest} request
+     * @param {Namecom.UrlForwardingInput} request
      * @param {UrlForwardingsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Namecom.BadRequestError}
@@ -163,25 +163,23 @@ export class UrlForwardingsClient {
      * @example
      *     await client.urlForwardings.createUrlForwarding({
      *         domainName: "example.com",
-     *         body: {
-     *             forwardsTo: "https://destination-site.com",
-     *             host: "www",
-     *             type: "masked"
-     *         }
+     *         forwardsTo: "https://destination-site.com",
+     *         host: "www",
+     *         type: "masked"
      *     })
      */
     public createUrlForwarding(
-        request: Namecom.CreateUrlForwardingRequest,
+        request: Namecom.UrlForwardingInput,
         requestOptions?: UrlForwardingsClient.RequestOptions,
     ): core.HttpResponsePromise<Namecom.UrlForwardingResponse> {
         return core.HttpResponsePromise.fromPromise(this.__createUrlForwarding(request, requestOptions));
     }
 
     private async __createUrlForwarding(
-        request: Namecom.CreateUrlForwardingRequest,
+        request: Namecom.UrlForwardingInput,
         requestOptions?: UrlForwardingsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Namecom.UrlForwardingResponse>> {
-        const { domainName, body: _body } = request;
+        const { domainName, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -387,11 +385,7 @@ export class UrlForwardingsClient {
      *     await client.urlForwardings.updateUrlForwarding({
      *         domainName: "example.com",
      *         host: "www.example.org",
-     *         body: {
-     *             forwardsTo: "https://destination-site.com",
-     *             host: "www",
-     *             type: "masked"
-     *         }
+     *         body: {}
      *     })
      */
     public updateUrlForwarding(
@@ -916,11 +910,7 @@ export class UrlForwardingsClient {
      *     await client.urlForwardings.updateUrlForwardingById({
      *         domainName: "example.com",
      *         id: 12345,
-     *         body: {
-     *             forwardsTo: "https://destination-site.com",
-     *             host: "www",
-     *             type: "masked"
-     *         }
+     *         body: {}
      *     })
      */
     public updateUrlForwardingById(

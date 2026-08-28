@@ -336,11 +336,9 @@ describe("UrlForwardingsClient", () => {
 
         const response = await client.urlForwardings.createUrlForwarding({
             domainName: "example.com",
-            body: {
-                forwardsTo: "https://destination-site.com",
-                host: "www",
-                type: "masked",
-            },
+            forwardsTo: "https://destination-site.com",
+            host: "www",
+            type: "masked",
         });
         expect(response).toEqual(rawResponseBody);
     });
@@ -368,11 +366,9 @@ describe("UrlForwardingsClient", () => {
         await expect(async () => {
             return await client.urlForwardings.createUrlForwarding({
                 domainName: "domainName",
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                forwardsTo: "forwardsTo",
+                host: "host",
+                type: "masked",
             });
         }).rejects.toThrow(Namecom.BadRequestError);
     });
@@ -400,11 +396,9 @@ describe("UrlForwardingsClient", () => {
         await expect(async () => {
             return await client.urlForwardings.createUrlForwarding({
                 domainName: "domainName",
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                forwardsTo: "forwardsTo",
+                host: "host",
+                type: "masked",
             });
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
@@ -432,11 +426,9 @@ describe("UrlForwardingsClient", () => {
         await expect(async () => {
             return await client.urlForwardings.createUrlForwarding({
                 domainName: "domainName",
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                forwardsTo: "forwardsTo",
+                host: "host",
+                type: "masked",
             });
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
@@ -464,11 +456,9 @@ describe("UrlForwardingsClient", () => {
         await expect(async () => {
             return await client.urlForwardings.createUrlForwarding({
                 domainName: "domainName",
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                forwardsTo: "forwardsTo",
+                host: "host",
+                type: "masked",
             });
         }).rejects.toThrow(Namecom.NotFoundError);
     });
@@ -496,11 +486,9 @@ describe("UrlForwardingsClient", () => {
         await expect(async () => {
             return await client.urlForwardings.createUrlForwarding({
                 domainName: "domainName",
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                forwardsTo: "forwardsTo",
+                host: "host",
+                type: "masked",
             });
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
@@ -528,11 +516,9 @@ describe("UrlForwardingsClient", () => {
         await expect(async () => {
             return await client.urlForwardings.createUrlForwarding({
                 domainName: "domainName",
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                forwardsTo: "forwardsTo",
+                host: "host",
+                type: "masked",
             });
         }).rejects.toThrow(Namecom.ConflictError);
     });
@@ -560,11 +546,9 @@ describe("UrlForwardingsClient", () => {
         await expect(async () => {
             return await client.urlForwardings.createUrlForwarding({
                 domainName: "domainName",
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                forwardsTo: "forwardsTo",
+                host: "host",
+                type: "masked",
             });
         }).rejects.toThrow(Namecom.UnsupportedMediaTypeError);
     });
@@ -592,11 +576,9 @@ describe("UrlForwardingsClient", () => {
         await expect(async () => {
             return await client.urlForwardings.createUrlForwarding({
                 domainName: "domainName",
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                forwardsTo: "forwardsTo",
+                host: "host",
+                type: "masked",
             });
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
@@ -624,11 +606,9 @@ describe("UrlForwardingsClient", () => {
         await expect(async () => {
             return await client.urlForwardings.createUrlForwarding({
                 domainName: "domainName",
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                forwardsTo: "forwardsTo",
+                host: "host",
+                type: "masked",
             });
         }).rejects.toThrow(Namecom.InternalServerError);
     });
@@ -656,11 +636,9 @@ describe("UrlForwardingsClient", () => {
         await expect(async () => {
             return await client.urlForwardings.createUrlForwarding({
                 domainName: "domainName",
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                forwardsTo: "forwardsTo",
+                host: "host",
+                type: "masked",
             });
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
@@ -688,11 +666,9 @@ describe("UrlForwardingsClient", () => {
         await expect(async () => {
             return await client.urlForwardings.createUrlForwarding({
                 domainName: "domainName",
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                forwardsTo: "forwardsTo",
+                host: "host",
+                type: "masked",
             });
         }).rejects.toThrow(Namecom.ServiceUnavailableError);
     });
@@ -720,11 +696,9 @@ describe("UrlForwardingsClient", () => {
         await expect(async () => {
             return await client.urlForwardings.createUrlForwarding({
                 domainName: "domainName",
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                forwardsTo: "forwardsTo",
+                host: "host",
+                type: "masked",
             });
         }).rejects.toThrow(Namecom.GatewayTimeoutError);
     });
@@ -1041,7 +1015,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "https://destination-site.com", host: "www", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = {
             domainName: "example.org",
             forwardsTo: "https://destination-site.com",
@@ -1064,11 +1038,7 @@ describe("UrlForwardingsClient", () => {
         const response = await client.urlForwardings.updateUrlForwarding({
             domainName: "example.com",
             host: "www.example.org",
-            body: {
-                forwardsTo: "https://destination-site.com",
-                host: "www",
-                type: "masked",
-            },
+            body: {},
         });
         expect(response).toEqual(rawResponseBody);
     });
@@ -1081,7 +1051,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -1097,11 +1067,7 @@ describe("UrlForwardingsClient", () => {
             return await client.urlForwardings.updateUrlForwarding({
                 domainName: "domainName",
                 host: "host",
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                body: {},
             });
         }).rejects.toThrow(Namecom.BadRequestError);
     });
@@ -1114,7 +1080,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -1130,11 +1096,7 @@ describe("UrlForwardingsClient", () => {
             return await client.urlForwardings.updateUrlForwarding({
                 domainName: "domainName",
                 host: "host",
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
@@ -1147,7 +1109,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -1163,11 +1125,7 @@ describe("UrlForwardingsClient", () => {
             return await client.urlForwardings.updateUrlForwarding({
                 domainName: "domainName",
                 host: "host",
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                body: {},
             });
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
@@ -1180,7 +1138,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
@@ -1196,11 +1154,7 @@ describe("UrlForwardingsClient", () => {
             return await client.urlForwardings.updateUrlForwarding({
                 domainName: "domainName",
                 host: "host",
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                body: {},
             });
         }).rejects.toThrow(Namecom.NotFoundError);
     });
@@ -1213,7 +1167,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -1229,11 +1183,7 @@ describe("UrlForwardingsClient", () => {
             return await client.urlForwardings.updateUrlForwarding({
                 domainName: "domainName",
                 host: "host",
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                body: {},
             });
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
@@ -1246,7 +1196,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
@@ -1262,11 +1212,7 @@ describe("UrlForwardingsClient", () => {
             return await client.urlForwardings.updateUrlForwarding({
                 domainName: "domainName",
                 host: "host",
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnsupportedMediaTypeError);
     });
@@ -1279,7 +1225,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -1295,11 +1241,7 @@ describe("UrlForwardingsClient", () => {
             return await client.urlForwardings.updateUrlForwarding({
                 domainName: "domainName",
                 host: "host",
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                body: {},
             });
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
@@ -1312,7 +1254,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -1328,11 +1270,7 @@ describe("UrlForwardingsClient", () => {
             return await client.urlForwardings.updateUrlForwarding({
                 domainName: "domainName",
                 host: "host",
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                body: {},
             });
         }).rejects.toThrow(Namecom.InternalServerError);
     });
@@ -1345,7 +1283,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -1361,11 +1299,7 @@ describe("UrlForwardingsClient", () => {
             return await client.urlForwardings.updateUrlForwarding({
                 domainName: "domainName",
                 host: "host",
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                body: {},
             });
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
@@ -1378,7 +1312,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -1394,11 +1328,7 @@ describe("UrlForwardingsClient", () => {
             return await client.urlForwardings.updateUrlForwarding({
                 domainName: "domainName",
                 host: "host",
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                body: {},
             });
         }).rejects.toThrow(Namecom.ServiceUnavailableError);
     });
@@ -1411,7 +1341,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -1427,11 +1357,7 @@ describe("UrlForwardingsClient", () => {
             return await client.urlForwardings.updateUrlForwarding({
                 domainName: "domainName",
                 host: "host",
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                body: {},
             });
         }).rejects.toThrow(Namecom.GatewayTimeoutError);
     });
@@ -2576,7 +2502,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "https://destination-site.com", host: "www", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = {
             domainName: "example.org",
             forwardsTo: "https://destination-site.com",
@@ -2599,11 +2525,7 @@ describe("UrlForwardingsClient", () => {
         const response = await client.urlForwardings.updateUrlForwardingById({
             domainName: "example.com",
             id: 12345,
-            body: {
-                forwardsTo: "https://destination-site.com",
-                host: "www",
-                type: "masked",
-            },
+            body: {},
         });
         expect(response).toEqual(rawResponseBody);
     });
@@ -2616,7 +2538,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -2632,11 +2554,7 @@ describe("UrlForwardingsClient", () => {
             return await client.urlForwardings.updateUrlForwardingById({
                 domainName: "domainName",
                 id: 1,
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                body: {},
             });
         }).rejects.toThrow(Namecom.BadRequestError);
     });
@@ -2649,7 +2567,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -2665,11 +2583,7 @@ describe("UrlForwardingsClient", () => {
             return await client.urlForwardings.updateUrlForwardingById({
                 domainName: "domainName",
                 id: 1,
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
@@ -2682,7 +2596,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -2698,11 +2612,7 @@ describe("UrlForwardingsClient", () => {
             return await client.urlForwardings.updateUrlForwardingById({
                 domainName: "domainName",
                 id: 1,
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                body: {},
             });
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
@@ -2715,7 +2625,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
@@ -2731,11 +2641,7 @@ describe("UrlForwardingsClient", () => {
             return await client.urlForwardings.updateUrlForwardingById({
                 domainName: "domainName",
                 id: 1,
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                body: {},
             });
         }).rejects.toThrow(Namecom.NotFoundError);
     });
@@ -2748,7 +2654,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -2764,11 +2670,7 @@ describe("UrlForwardingsClient", () => {
             return await client.urlForwardings.updateUrlForwardingById({
                 domainName: "domainName",
                 id: 1,
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                body: {},
             });
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
@@ -2781,7 +2683,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
@@ -2797,11 +2699,7 @@ describe("UrlForwardingsClient", () => {
             return await client.urlForwardings.updateUrlForwardingById({
                 domainName: "domainName",
                 id: 1,
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                body: {},
             });
         }).rejects.toThrow(Namecom.UnsupportedMediaTypeError);
     });
@@ -2814,7 +2712,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -2830,11 +2728,7 @@ describe("UrlForwardingsClient", () => {
             return await client.urlForwardings.updateUrlForwardingById({
                 domainName: "domainName",
                 id: 1,
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                body: {},
             });
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
@@ -2847,7 +2741,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -2863,11 +2757,7 @@ describe("UrlForwardingsClient", () => {
             return await client.urlForwardings.updateUrlForwardingById({
                 domainName: "domainName",
                 id: 1,
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                body: {},
             });
         }).rejects.toThrow(Namecom.InternalServerError);
     });
@@ -2880,7 +2770,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -2896,11 +2786,7 @@ describe("UrlForwardingsClient", () => {
             return await client.urlForwardings.updateUrlForwardingById({
                 domainName: "domainName",
                 id: 1,
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                body: {},
             });
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
@@ -2913,7 +2799,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -2929,11 +2815,7 @@ describe("UrlForwardingsClient", () => {
             return await client.urlForwardings.updateUrlForwardingById({
                 domainName: "domainName",
                 id: 1,
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                body: {},
             });
         }).rejects.toThrow(Namecom.ServiceUnavailableError);
     });
@@ -2946,7 +2828,7 @@ describe("UrlForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { forwardsTo: "forwardsTo", host: "host", type: "masked" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -2962,11 +2844,7 @@ describe("UrlForwardingsClient", () => {
             return await client.urlForwardings.updateUrlForwardingById({
                 domainName: "domainName",
                 id: 1,
-                body: {
-                    forwardsTo: "forwardsTo",
-                    host: "host",
-                    type: "masked",
-                },
+                body: {},
             });
         }).rejects.toThrow(Namecom.GatewayTimeoutError);
     });

@@ -7,11 +7,7 @@ import type * as Namecom from "../../../../index.js";
  *     {
  *         domainName: "example.com",
  *         id: 12345,
- *         body: {
- *             forwardsTo: "https://destination-site.com",
- *             host: "www",
- *             type: "masked"
- *         }
+ *         body: {}
  *     }
  */
 export interface UpdateUrlForwardingByIdRequest {
@@ -19,5 +15,5 @@ export interface UpdateUrlForwardingByIdRequest {
     domainName: string;
     /** ID is the server-assigned unique identifier for the URL forwarding record (returned in list responses). */
     id: number;
-    body: Namecom.UrlForwardingInput;
+    body: Namecom.UrlForwardingUpdate;
 }

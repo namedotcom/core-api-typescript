@@ -7,11 +7,7 @@ import type * as Namecom from "../../../../index.js";
  *     {
  *         domainName: "example.com",
  *         host: "www.example.org",
- *         body: {
- *             forwardsTo: "https://destination-site.com",
- *             host: "www",
- *             type: "masked"
- *         }
+ *         body: {}
  *     }
  */
 export interface UpdateUrlForwardingRequest {
@@ -19,5 +15,5 @@ export interface UpdateUrlForwardingRequest {
     domainName: string;
     /** The full hostname, including subdomain. */
     host: string;
-    body: Namecom.UrlForwardingInput;
+    body: Namecom.UrlForwardingUpdate;
 }

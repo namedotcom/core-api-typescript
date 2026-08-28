@@ -2550,11 +2550,9 @@ Sets up a new URL forwarding (redirect) for a domain or subdomain. If this is th
 ```typescript
 await client.urlForwardings.createUrlForwarding({
     domainName: "example.com",
-    body: {
-        forwardsTo: "https://destination-site.com",
-        host: "www",
-        type: "masked"
-    }
+    forwardsTo: "https://destination-site.com",
+    host: "www",
+    type: "masked"
 });
 
 ```
@@ -2571,7 +2569,7 @@ await client.urlForwardings.createUrlForwarding({
 <dl>
 <dd>
 
-**request:** `Namecom.CreateUrlForwardingRequest` 
+**request:** `Namecom.UrlForwardingInput` 
     
 </dd>
 </dl>
@@ -2687,11 +2685,7 @@ Modifies an existing URL forwarding rule. Changes may take up to 24 hours to ful
 await client.urlForwardings.updateUrlForwarding({
     domainName: "example.com",
     host: "www.example.org",
-    body: {
-        forwardsTo: "https://destination-site.com",
-        host: "www",
-        type: "masked"
-    }
+    body: {}
 });
 
 ```
@@ -3023,11 +3017,7 @@ Modifies an existing URL forwarding rule by ID.  The domain must be owned by the
 await client.urlForwardings.updateUrlForwardingById({
     domainName: "example.com",
     id: 12345,
-    body: {
-        forwardsTo: "https://destination-site.com",
-        host: "www",
-        type: "masked"
-    }
+    body: {}
 });
 
 ```
