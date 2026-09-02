@@ -595,7 +595,7 @@ describe("WebhookNotificationsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { url: "url" };
+        const rawRequestBody = {};
         const rawResponseBody = {
             subscription: {
                 active: true,
@@ -618,9 +618,6 @@ describe("WebhookNotificationsClient", () => {
 
         const response = await client.webhookNotifications.modifySubscription({
             id: 1,
-            body: {
-                url: "url",
-            },
         });
         expect(response).toEqual(rawResponseBody);
     });
@@ -633,7 +630,7 @@ describe("WebhookNotificationsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { url: "url" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -648,9 +645,6 @@ describe("WebhookNotificationsClient", () => {
         await expect(async () => {
             return await client.webhookNotifications.modifySubscription({
                 id: 1,
-                body: {
-                    url: "url",
-                },
             });
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
@@ -663,7 +657,7 @@ describe("WebhookNotificationsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { url: "url" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -678,9 +672,6 @@ describe("WebhookNotificationsClient", () => {
         await expect(async () => {
             return await client.webhookNotifications.modifySubscription({
                 id: 1,
-                body: {
-                    url: "url",
-                },
             });
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
@@ -693,7 +684,7 @@ describe("WebhookNotificationsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { url: "url" };
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
@@ -708,9 +699,6 @@ describe("WebhookNotificationsClient", () => {
         await expect(async () => {
             return await client.webhookNotifications.modifySubscription({
                 id: 1,
-                body: {
-                    url: "url",
-                },
             });
         }).rejects.toThrow(Namecom.NotFoundError);
     });
@@ -723,7 +711,7 @@ describe("WebhookNotificationsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { url: "url" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -738,9 +726,6 @@ describe("WebhookNotificationsClient", () => {
         await expect(async () => {
             return await client.webhookNotifications.modifySubscription({
                 id: 1,
-                body: {
-                    url: "url",
-                },
             });
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
@@ -753,7 +738,7 @@ describe("WebhookNotificationsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { url: "url" };
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
@@ -768,9 +753,6 @@ describe("WebhookNotificationsClient", () => {
         await expect(async () => {
             return await client.webhookNotifications.modifySubscription({
                 id: 1,
-                body: {
-                    url: "url",
-                },
             });
         }).rejects.toThrow(Namecom.UnsupportedMediaTypeError);
     });
@@ -783,7 +765,7 @@ describe("WebhookNotificationsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { url: "url" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -798,9 +780,6 @@ describe("WebhookNotificationsClient", () => {
         await expect(async () => {
             return await client.webhookNotifications.modifySubscription({
                 id: 1,
-                body: {
-                    url: "url",
-                },
             });
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
@@ -813,7 +792,7 @@ describe("WebhookNotificationsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { url: "url" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -828,9 +807,6 @@ describe("WebhookNotificationsClient", () => {
         await expect(async () => {
             return await client.webhookNotifications.modifySubscription({
                 id: 1,
-                body: {
-                    url: "url",
-                },
             });
         }).rejects.toThrow(Namecom.InternalServerError);
     });
@@ -843,7 +819,7 @@ describe("WebhookNotificationsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { url: "url" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -858,9 +834,6 @@ describe("WebhookNotificationsClient", () => {
         await expect(async () => {
             return await client.webhookNotifications.modifySubscription({
                 id: 1,
-                body: {
-                    url: "url",
-                },
             });
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
@@ -873,7 +846,7 @@ describe("WebhookNotificationsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { url: "url" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -888,9 +861,6 @@ describe("WebhookNotificationsClient", () => {
         await expect(async () => {
             return await client.webhookNotifications.modifySubscription({
                 id: 1,
-                body: {
-                    url: "url",
-                },
             });
         }).rejects.toThrow(Namecom.ServiceUnavailableError);
     });
@@ -903,7 +873,7 @@ describe("WebhookNotificationsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { url: "url" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -918,9 +888,6 @@ describe("WebhookNotificationsClient", () => {
         await expect(async () => {
             return await client.webhookNotifications.modifySubscription({
                 id: 1,
-                body: {
-                    url: "url",
-                },
             });
         }).rejects.toThrow(Namecom.GatewayTimeoutError);
     });

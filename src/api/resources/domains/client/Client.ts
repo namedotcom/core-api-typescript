@@ -557,10 +557,7 @@ export class DomainsClient {
      *
      * @example
      *     await client.domains.updateDomain({
-     *         domainName: "domainName",
-     *         body: {
-     *             autorenewEnabled: true
-     *         }
+     *         domainName: "domainName"
      *     })
      */
     public updateDomain(
@@ -574,7 +571,7 @@ export class DomainsClient {
         request: Namecom.UpdateDomainRequest,
         requestOptions?: DomainsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Namecom.DomainResponsePayload>> {
-        const { domainName, body: _body } = request;
+        const { domainName, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,

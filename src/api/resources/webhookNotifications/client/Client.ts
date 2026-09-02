@@ -255,10 +255,7 @@ export class WebhookNotificationsClient {
      *
      * @example
      *     await client.webhookNotifications.modifySubscription({
-     *         id: 1,
-     *         body: {
-     *             url: "url"
-     *         }
+     *         id: 1
      *     })
      */
     public modifySubscription(
@@ -272,7 +269,7 @@ export class WebhookNotificationsClient {
         request: Namecom.ModifySubscriptionRequest,
         requestOptions?: WebhookNotificationsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Namecom.ModifySubscriptionResponse>> {
-        const { id, body: _body } = request;
+        const { id, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,

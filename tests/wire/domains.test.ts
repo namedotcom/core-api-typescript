@@ -614,7 +614,7 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { autorenewEnabled: true };
+        const rawRequestBody = {};
         const rawResponseBody = {
             domainName: "example.com",
             createDate: "2023-01-15T14:30:00Z",
@@ -705,9 +705,6 @@ describe("DomainsClient", () => {
 
         const response = await client.domains.updateDomain({
             domainName: "domainName",
-            body: {
-                autorenewEnabled: true,
-            },
         });
         expect(response).toEqual(rawResponseBody);
     });
@@ -720,7 +717,7 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { autorenewEnabled: true };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -735,9 +732,6 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.updateDomain({
                 domainName: "domainName",
-                body: {
-                    autorenewEnabled: true,
-                },
             });
         }).rejects.toThrow(Namecom.BadRequestError);
     });
@@ -750,7 +744,7 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { autorenewEnabled: true };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -765,9 +759,6 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.updateDomain({
                 domainName: "domainName",
-                body: {
-                    autorenewEnabled: true,
-                },
             });
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
@@ -780,7 +771,7 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { autorenewEnabled: true };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -795,9 +786,6 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.updateDomain({
                 domainName: "domainName",
-                body: {
-                    autorenewEnabled: true,
-                },
             });
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
@@ -810,7 +798,7 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { autorenewEnabled: true };
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
@@ -825,9 +813,6 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.updateDomain({
                 domainName: "domainName",
-                body: {
-                    autorenewEnabled: true,
-                },
             });
         }).rejects.toThrow(Namecom.NotFoundError);
     });
@@ -840,7 +825,7 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { autorenewEnabled: true };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -855,9 +840,6 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.updateDomain({
                 domainName: "domainName",
-                body: {
-                    autorenewEnabled: true,
-                },
             });
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
@@ -870,7 +852,7 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { autorenewEnabled: true };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -885,9 +867,6 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.updateDomain({
                 domainName: "domainName",
-                body: {
-                    autorenewEnabled: true,
-                },
             });
         }).rejects.toThrow(Namecom.ConflictError);
     });
@@ -900,7 +879,7 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { autorenewEnabled: true };
+        const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
 
         server
@@ -915,9 +894,6 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.updateDomain({
                 domainName: "domainName",
-                body: {
-                    autorenewEnabled: true,
-                },
             });
         }).rejects.toThrow(Namecom.UnsupportedMediaTypeError);
     });
@@ -930,7 +906,7 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { autorenewEnabled: true };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -945,9 +921,6 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.updateDomain({
                 domainName: "domainName",
-                body: {
-                    autorenewEnabled: true,
-                },
             });
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
@@ -960,7 +933,7 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { autorenewEnabled: true };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -975,9 +948,6 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.updateDomain({
                 domainName: "domainName",
-                body: {
-                    autorenewEnabled: true,
-                },
             });
         }).rejects.toThrow(Namecom.InternalServerError);
     });
@@ -990,7 +960,7 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { autorenewEnabled: true };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -1005,9 +975,6 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.updateDomain({
                 domainName: "domainName",
-                body: {
-                    autorenewEnabled: true,
-                },
             });
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
@@ -1020,7 +987,7 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { autorenewEnabled: true };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -1035,9 +1002,6 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.updateDomain({
                 domainName: "domainName",
-                body: {
-                    autorenewEnabled: true,
-                },
             });
         }).rejects.toThrow(Namecom.ServiceUnavailableError);
     });
@@ -1050,7 +1014,7 @@ describe("DomainsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { autorenewEnabled: true };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
         server
@@ -1065,9 +1029,6 @@ describe("DomainsClient", () => {
         await expect(async () => {
             return await client.domains.updateDomain({
                 domainName: "domainName",
-                body: {
-                    autorenewEnabled: true,
-                },
             });
         }).rejects.toThrow(Namecom.GatewayTimeoutError);
     });
