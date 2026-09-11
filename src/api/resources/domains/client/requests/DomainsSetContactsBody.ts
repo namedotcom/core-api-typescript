@@ -5,11 +5,12 @@ import type * as Namecom from "../../../../index.js";
 /**
  * @example
  *     {
- *         domainName: "example.com"
+ *         domainName: "example.com",
+ *         contacts: {}
  *     }
  */
 export interface DomainsSetContactsBody {
     /** DomainName is the domain name to set the contacts for. */
     domainName: string;
-    contacts?: Namecom.ContactsRequest;
+    contacts: Namecom.ContactsRequest;
 }

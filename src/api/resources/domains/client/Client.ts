@@ -1703,7 +1703,8 @@ export class DomainsClient {
      *
      * @example
      *     await client.domains.setContacts({
-     *         domainName: "example.com"
+     *         domainName: "example.com",
+     *         contacts: {}
      *     })
      */
     public setContacts(

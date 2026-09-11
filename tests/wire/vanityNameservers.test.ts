@@ -990,7 +990,7 @@ describe("VanityNameserversClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { ips: ["192.168.1.10", "2001:0db8:85a3:0000:0000:8a2e:0370:7334"] };
         const rawResponseBody = {
             domainName: "example.com",
             hostname: "ns1.example.com",
@@ -1009,6 +1009,7 @@ describe("VanityNameserversClient", () => {
         const response = await client.vanityNameservers.updateVanityNameserver({
             domainName: "example.com",
             hostname: "ns1.example.com",
+            ips: ["192.168.1.10", "2001:0db8:85a3:0000:0000:8a2e:0370:7334"],
         });
         expect(response).toEqual(rawResponseBody);
     });
@@ -1021,7 +1022,7 @@ describe("VanityNameserversClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { ips: ["ips", "ips"] };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1037,6 +1038,7 @@ describe("VanityNameserversClient", () => {
             return await client.vanityNameservers.updateVanityNameserver({
                 domainName: "domainName",
                 hostname: "hostname",
+                ips: ["ips", "ips"],
             });
         }).rejects.toThrow(Namecom.BadRequestError);
     });
@@ -1049,7 +1051,7 @@ describe("VanityNameserversClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { ips: ["ips", "ips"] };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1065,6 +1067,7 @@ describe("VanityNameserversClient", () => {
             return await client.vanityNameservers.updateVanityNameserver({
                 domainName: "domainName",
                 hostname: "hostname",
+                ips: ["ips", "ips"],
             });
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
@@ -1077,7 +1080,7 @@ describe("VanityNameserversClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { ips: ["ips", "ips"] };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1093,6 +1096,7 @@ describe("VanityNameserversClient", () => {
             return await client.vanityNameservers.updateVanityNameserver({
                 domainName: "domainName",
                 hostname: "hostname",
+                ips: ["ips", "ips"],
             });
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
@@ -1105,7 +1109,7 @@ describe("VanityNameserversClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { ips: ["ips", "ips"] };
         const rawResponseBody = { message: "message" };
 
         server
@@ -1121,6 +1125,7 @@ describe("VanityNameserversClient", () => {
             return await client.vanityNameservers.updateVanityNameserver({
                 domainName: "domainName",
                 hostname: "hostname",
+                ips: ["ips", "ips"],
             });
         }).rejects.toThrow(Namecom.NotFoundError);
     });
@@ -1133,7 +1138,7 @@ describe("VanityNameserversClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { ips: ["ips", "ips"] };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1149,6 +1154,7 @@ describe("VanityNameserversClient", () => {
             return await client.vanityNameservers.updateVanityNameserver({
                 domainName: "domainName",
                 hostname: "hostname",
+                ips: ["ips", "ips"],
             });
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
@@ -1161,7 +1167,7 @@ describe("VanityNameserversClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { ips: ["ips", "ips"] };
         const rawResponseBody = { message: "message" };
 
         server
@@ -1177,6 +1183,7 @@ describe("VanityNameserversClient", () => {
             return await client.vanityNameservers.updateVanityNameserver({
                 domainName: "domainName",
                 hostname: "hostname",
+                ips: ["ips", "ips"],
             });
         }).rejects.toThrow(Namecom.UnsupportedMediaTypeError);
     });
@@ -1189,7 +1196,7 @@ describe("VanityNameserversClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { ips: ["ips", "ips"] };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1205,6 +1212,7 @@ describe("VanityNameserversClient", () => {
             return await client.vanityNameservers.updateVanityNameserver({
                 domainName: "domainName",
                 hostname: "hostname",
+                ips: ["ips", "ips"],
             });
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
@@ -1217,7 +1225,7 @@ describe("VanityNameserversClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { ips: ["ips", "ips"] };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1233,6 +1241,7 @@ describe("VanityNameserversClient", () => {
             return await client.vanityNameservers.updateVanityNameserver({
                 domainName: "domainName",
                 hostname: "hostname",
+                ips: ["ips", "ips"],
             });
         }).rejects.toThrow(Namecom.InternalServerError);
     });
@@ -1245,7 +1254,7 @@ describe("VanityNameserversClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { ips: ["ips", "ips"] };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1261,6 +1270,7 @@ describe("VanityNameserversClient", () => {
             return await client.vanityNameservers.updateVanityNameserver({
                 domainName: "domainName",
                 hostname: "hostname",
+                ips: ["ips", "ips"],
             });
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
@@ -1273,7 +1283,7 @@ describe("VanityNameserversClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { ips: ["ips", "ips"] };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1289,6 +1299,7 @@ describe("VanityNameserversClient", () => {
             return await client.vanityNameservers.updateVanityNameserver({
                 domainName: "domainName",
                 hostname: "hostname",
+                ips: ["ips", "ips"],
             });
         }).rejects.toThrow(Namecom.ServiceUnavailableError);
     });
@@ -1301,7 +1312,7 @@ describe("VanityNameserversClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { ips: ["ips", "ips"] };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1317,6 +1328,7 @@ describe("VanityNameserversClient", () => {
             return await client.vanityNameservers.updateVanityNameserver({
                 domainName: "domainName",
                 hostname: "hostname",
+                ips: ["ips", "ips"],
             });
         }).rejects.toThrow(Namecom.GatewayTimeoutError);
     });

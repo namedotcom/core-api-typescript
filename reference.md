@@ -1124,7 +1124,8 @@ When registrant contact information is updated, validation may be triggered if t
 
 ```typescript
 await client.domains.setContacts({
-    domainName: "example.com"
+    domainName: "example.com",
+    contacts: {}
 });
 
 ```
@@ -2013,7 +2014,8 @@ Updates the destination email address for an existing forwarding rule.
 ```typescript
 await client.emailForwardings.updateEmailForwarding({
     domainName: "domainName",
-    emailBox: "emailBox"
+    emailBox: "emailBox",
+    emailTo: "emailTo"
 });
 
 ```
@@ -3281,7 +3283,8 @@ Updates the glue record IP addresses for a vanity nameserver.
 ```typescript
 await client.vanityNameservers.updateVanityNameserver({
     domainName: "example.com",
-    hostname: "ns1.example.com"
+    hostname: "ns1.example.com",
+    ips: ["192.168.1.10", "2001:0db8:85a3:0000:0000:8a2e:0370:7334"]
 });
 
 ```

@@ -4,7 +4,8 @@
  * @example
  *     {
  *         domainName: "domainName",
- *         emailBox: "emailBox"
+ *         emailBox: "emailBox",
+ *         emailTo: "emailTo"
  *     }
  */
 export interface EmailForwardingsUpdateEmailForwardingBody {
@@ -13,5 +14,5 @@ export interface EmailForwardingsUpdateEmailForwardingBody {
     /** EmailBox is the user portion of the email address to forward. */
     emailBox: string;
     /** EmailTo is the entire email address to forward email to. */
-    emailTo?: string;
+    emailTo: string;
 }

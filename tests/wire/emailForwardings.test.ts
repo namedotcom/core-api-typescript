@@ -920,7 +920,7 @@ describe("EmailForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { emailTo: "emailTo" };
         const rawResponseBody = { domainName: "example.com", emailBox: "admin", emailTo: "webmaster@example.com" };
 
         server
@@ -935,6 +935,7 @@ describe("EmailForwardingsClient", () => {
         const response = await client.emailForwardings.updateEmailForwarding({
             domainName: "domainName",
             emailBox: "emailBox",
+            emailTo: "emailTo",
         });
         expect(response).toEqual(rawResponseBody);
     });
@@ -947,7 +948,7 @@ describe("EmailForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { emailTo: "x" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -963,6 +964,7 @@ describe("EmailForwardingsClient", () => {
             return await client.emailForwardings.updateEmailForwarding({
                 domainName: "domainName",
                 emailBox: "emailBox",
+                emailTo: "x",
             });
         }).rejects.toThrow(Namecom.UnauthorizedError);
     });
@@ -975,7 +977,7 @@ describe("EmailForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { emailTo: "x" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -991,6 +993,7 @@ describe("EmailForwardingsClient", () => {
             return await client.emailForwardings.updateEmailForwarding({
                 domainName: "domainName",
                 emailBox: "emailBox",
+                emailTo: "x",
             });
         }).rejects.toThrow(Namecom.ForbiddenError);
     });
@@ -1003,7 +1006,7 @@ describe("EmailForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { emailTo: "x" };
         const rawResponseBody = { message: "message" };
 
         server
@@ -1019,6 +1022,7 @@ describe("EmailForwardingsClient", () => {
             return await client.emailForwardings.updateEmailForwarding({
                 domainName: "domainName",
                 emailBox: "emailBox",
+                emailTo: "x",
             });
         }).rejects.toThrow(Namecom.NotFoundError);
     });
@@ -1031,7 +1035,7 @@ describe("EmailForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { emailTo: "x" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1047,6 +1051,7 @@ describe("EmailForwardingsClient", () => {
             return await client.emailForwardings.updateEmailForwarding({
                 domainName: "domainName",
                 emailBox: "emailBox",
+                emailTo: "x",
             });
         }).rejects.toThrow(Namecom.MethodNotAllowedError);
     });
@@ -1059,7 +1064,7 @@ describe("EmailForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { emailTo: "x" };
         const rawResponseBody = { message: "message" };
 
         server
@@ -1075,6 +1080,7 @@ describe("EmailForwardingsClient", () => {
             return await client.emailForwardings.updateEmailForwarding({
                 domainName: "domainName",
                 emailBox: "emailBox",
+                emailTo: "x",
             });
         }).rejects.toThrow(Namecom.UnsupportedMediaTypeError);
     });
@@ -1087,7 +1093,7 @@ describe("EmailForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { emailTo: "x" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1103,6 +1109,7 @@ describe("EmailForwardingsClient", () => {
             return await client.emailForwardings.updateEmailForwarding({
                 domainName: "domainName",
                 emailBox: "emailBox",
+                emailTo: "x",
             });
         }).rejects.toThrow(Namecom.TooManyRequestsError);
     });
@@ -1115,7 +1122,7 @@ describe("EmailForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { emailTo: "x" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1131,6 +1138,7 @@ describe("EmailForwardingsClient", () => {
             return await client.emailForwardings.updateEmailForwarding({
                 domainName: "domainName",
                 emailBox: "emailBox",
+                emailTo: "x",
             });
         }).rejects.toThrow(Namecom.InternalServerError);
     });
@@ -1143,7 +1151,7 @@ describe("EmailForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { emailTo: "x" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1159,6 +1167,7 @@ describe("EmailForwardingsClient", () => {
             return await client.emailForwardings.updateEmailForwarding({
                 domainName: "domainName",
                 emailBox: "emailBox",
+                emailTo: "x",
             });
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
@@ -1171,7 +1180,7 @@ describe("EmailForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { emailTo: "x" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1187,6 +1196,7 @@ describe("EmailForwardingsClient", () => {
             return await client.emailForwardings.updateEmailForwarding({
                 domainName: "domainName",
                 emailBox: "emailBox",
+                emailTo: "x",
             });
         }).rejects.toThrow(Namecom.ServiceUnavailableError);
     });
@@ -1199,7 +1209,7 @@ describe("EmailForwardingsClient", () => {
             password: "test",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {};
+        const rawRequestBody = { emailTo: "x" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1215,6 +1225,7 @@ describe("EmailForwardingsClient", () => {
             return await client.emailForwardings.updateEmailForwarding({
                 domainName: "domainName",
                 emailBox: "emailBox",
+                emailTo: "x",
             });
         }).rejects.toThrow(Namecom.GatewayTimeoutError);
     });

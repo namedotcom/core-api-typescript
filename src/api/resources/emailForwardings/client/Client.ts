@@ -370,7 +370,8 @@ export class EmailForwardingsClient {
      * @example
      *     await client.emailForwardings.updateEmailForwarding({
      *         domainName: "domainName",
-     *         emailBox: "emailBox"
+     *         emailBox: "emailBox",
+     *         emailTo: "emailTo"
      *     })
      */
     public updateEmailForwarding(
