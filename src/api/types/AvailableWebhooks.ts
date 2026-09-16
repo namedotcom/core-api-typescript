@@ -11,6 +11,7 @@ export const AvailableWebhooks = {
     DomainTransferInternalIn: "domain.transfer.internal_in",
     DomainTransferInternalOut: "domain.transfer.internal_out",
     DomainRegistryRejection: "domain.registry.rejection",
+    DomainRegistryComplianceNotice: "domain.registry.compliance_notice",
     DomainExpiration: "domain.expiration",
 } as const;
 export type AvailableWebhooks = (typeof AvailableWebhooks)[keyof typeof AvailableWebhooks];

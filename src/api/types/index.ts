@@ -31,6 +31,7 @@ export * from "./DomainCreatePayload.js";
 export * from "./DomainExpiration.js";
 export * from "./DomainLockStatusChange.js";
 export * from "./DomainName.js";
+export * from "./DomainRegistryComplianceNotice.js";
 export * from "./DomainRegistryRejection.js";
 export * from "./DomainResponsePayload.js";
 export * from "./DomainTransferInternalInStatusChange.js";
