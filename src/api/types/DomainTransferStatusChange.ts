@@ -11,6 +11,8 @@ export interface DomainTransferStatusChange {
     /** The domain that the transfer status has changed for */
     domainName: string;
     status: Namecom.TransferStatus;
+    /** Included only when `status` is `completed` and one or more submitted contacts could not be applied and were replaced by account default contacts.  Omitted otherwise. */
+    warning?: string | undefined;
 }
 
 export namespace DomainTransferStatusChange {
