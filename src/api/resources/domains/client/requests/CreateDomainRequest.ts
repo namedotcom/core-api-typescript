@@ -138,6 +138,6 @@ export interface CreateDomainRequest {
     claims?: Namecom.DomainClaimsInfo;
     /** Years specifies the registration term in years. **Only affects price and registration length for `purchaseType: registration`.** Defaults to each TLD's minimum if omitted (usually 1; 2 for `.ai`). Must be a supported registration term for the TLD when `purchaseType` is `registration` (commonly 1–10 years). For `purchaseType: registration` when `purchasePrice` is required, call [Get Pricing](/api/v1/reference/domains/get-pricing-for-domain) with the same `years` value. For aftermarket, expiring, and backorder types: pass the TLD default — it does **not** multiply `purchasePrice` and does **not** guarantee a multi-year registration. Check `domain.expireDate` in the create response for actual expiry. To add registration time after acquisition, use [Renew Domain](/api/v1/reference/domains/renew-domain). */
     years?: number;
-    /** PromoCode is an optional promotional code to apply to the domain purchase. Only one promo code can be applied per request. */
+    /** PromoCode is an optional promotional code to apply to the domain purchase. Only one promo code can be applied per request. Promo codes specify eligibility criteria, including duration. If the supplied promo applies no discount, the request fails with `400` and `"Promo code does not apply a discount to this purchase"`. The order is not created. */
     promoCode?: string;
 }
