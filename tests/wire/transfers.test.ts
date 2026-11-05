@@ -20,7 +20,7 @@ describe("TransfersClient", () => {
             totalCount: 1,
             from: 1,
             to: 1,
-            transfers: [{ domainName: "example.com", email: "admin@example.com", status: "canceled" }],
+            transfers: [{ domainName: "example.com", status: "canceled" }],
         };
 
         server.mockEndpoint().get("/core/v1/transfers").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
@@ -221,7 +221,7 @@ describe("TransfersClient", () => {
         const rawResponseBody = {
             order: 12345,
             totalPaid: 12.99,
-            transfer: { domainName: "example.com", email: "admin@example.com", status: "canceled" },
+            transfer: { domainName: "example.com", status: "canceled" },
             warnings: {
                 message:
                     "Domain has registry statuses that may prevent a successful transfer. Please ensure the domain is unlocked and eligible at the losing registrar.",
@@ -618,7 +618,7 @@ describe("TransfersClient", () => {
             environment: server.baseUrl,
         });
 
-        const rawResponseBody = { domainName: "example.com", email: "admin@example.com", status: "canceled" };
+        const rawResponseBody = { domainName: "example.com", status: "canceled" };
 
         server
             .mockEndpoint()
@@ -903,7 +903,7 @@ describe("TransfersClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {};
-        const rawResponseBody = { domainName: "example.com", email: "admin@example.com", status: "canceled" };
+        const rawResponseBody = { domainName: "example.com", status: "canceled" };
 
         server
             .mockEndpoint()

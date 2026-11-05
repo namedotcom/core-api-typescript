@@ -8,7 +8,5 @@ import type * as Namecom from "../index.js";
 export interface Transfer {
     /** DomainName is the domain to be transfered to name.com. */
     domainName: string;
-    /** Email is the email address that the approval email was sent to. Not every TLD requries an approval email. This is usually pulled from Whois. */
-    email?: string | undefined;
     status: Namecom.TransferStatus;
 }

@@ -8,7 +8,7 @@ import type * as Namecom from "../index.js";
 export interface Order {
     /** AuthAmount is the amount authorized to complete the order purchase. */
     authAmount?: number | undefined;
-    /** CreateDate is the date the order was placed. */
+    /** CreateDate is the UTC date and time the order was placed. */
     createDate?: string | undefined;
     /** Currency indicates currency of the order ('USD', 'CNY'). */
     currency?: string | undefined;
