@@ -241,6 +241,15 @@ export class DomainsClient {
      * @example
      *     await client.domains.createDomain({
      *         domain: {
+     *             domainName: "example.com"
+     *         },
+     *         years: 1,
+     *         promoCode: "SPRING26"
+     *     })
+     *
+     * @example
+     *     await client.domains.createDomain({
+     *         domain: {
      *             domainName: "premiumexample.com"
      *         },
      *         purchasePrice: 349.95,
