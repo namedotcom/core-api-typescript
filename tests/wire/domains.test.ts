@@ -4430,6 +4430,34 @@ describe("DomainsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = { contacts: {} };
+        const rawResponseBody = { message: "message" };
+
+        server
+            .mockEndpoint()
+            .post("/core/v1/domains/domainName:setContacts")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(451)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.domains.setContacts({
+                domainName: "domainName",
+                contacts: {},
+            });
+        }).rejects.toThrow(Namecom.UnavailableForLegalReasonsError);
+    });
+
+    test("SetContacts (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new NamecomClient({
+            maxRetries: 0,
+            username: "test",
+            password: "test",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { contacts: {} };
         const rawResponseBody = { key: "value" };
 
         server
@@ -4449,7 +4477,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.InternalServerError);
     });
 
-    test("SetContacts (10)", async () => {
+    test("SetContacts (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -4477,7 +4505,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.BadGatewayError);
     });
 
-    test("SetContacts (11)", async () => {
+    test("SetContacts (12)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,
@@ -4505,7 +4533,7 @@ describe("DomainsClient", () => {
         }).rejects.toThrow(Namecom.ServiceUnavailableError);
     });
 
-    test("SetContacts (12)", async () => {
+    test("SetContacts (13)", async () => {
         const server = mockServerPool.createServer();
         const client = new NamecomClient({
             maxRetries: 0,

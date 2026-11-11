@@ -1703,6 +1703,7 @@ export class DomainsClient {
      * @throws {@link Namecom.MethodNotAllowedError}
      * @throws {@link Namecom.UnsupportedMediaTypeError}
      * @throws {@link Namecom.TooManyRequestsError}
+     * @throws {@link Namecom.UnavailableForLegalReasonsError}
      * @throws {@link Namecom.InternalServerError}
      * @throws {@link Namecom.BadGatewayError}
      * @throws {@link Namecom.ServiceUnavailableError}
@@ -1776,6 +1777,11 @@ export class DomainsClient {
                     );
                 case 429:
                     throw new Namecom.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                case 451:
+                    throw new Namecom.UnavailableForLegalReasonsError(
+                        _response.error.body as Namecom.UnavailableForLegal451,
+                        _response.rawResponse,
+                    );
                 case 500:
                     throw new Namecom.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
